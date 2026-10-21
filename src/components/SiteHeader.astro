@@ -1,5 +1,6 @@
 ---
 import CtaLink from './CtaLink.astro';
+import LogoMark from './LogoMark.astro';
 
 const links = [
 	{ href: '/', label: 'Review' },
@@ -13,8 +14,11 @@ const links = [
 <header class="site-header">
 	<div class="container header-inner">
 		<a class="wordmark" href="/">
-			<span class="wordmark-kicker">Independent review</span>
-			<span class="wordmark-name">AI Agency Engine Review</span>
+			<LogoMark />
+			<span class="wordmark-copy">
+				<span class="wordmark-kicker">Independent review</span>
+				<span class="wordmark-name">AI Agency Engine</span>
+			</span>
 		</a>
 		<nav class="desktop-nav" aria-label="Primary">
 			<ul class="nav-list">

@@ -2,13 +2,14 @@
 import { guides } from '../data/guides';
 import { product } from '../data/product';
 import { trustPages } from '../data/trust';
+import LogoMark from './LogoMark.astro';
 import OfficialLink from './OfficialLink.astro';
 ---
 
 <footer class="site-footer">
 	<div class="container footer-top">
 		<div>
-			<p class="footer-brand">AI Agency Engine Review</p>
+			<p class="footer-brand"><LogoMark size={32} /> <span>AI Agency Engine Review</span></p>
 			<p class="measure">
 				An independent review of {product.name}. Not {product.vendor}'s website, and not an official partner page. Offer buttons are affiliate links. A purchase through one may earn this site a commission.
 			</p>
