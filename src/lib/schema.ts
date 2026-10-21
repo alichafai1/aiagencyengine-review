@@ -87,23 +87,6 @@ export function buildHomepageSchema(input: { title: string; description: string;
 				},
 			},
 			{
-				'@type': 'Product',
-				name: product.name,
-				description: product.schemaDescription,
-				url: product.officialWebsite,
-				brand: {
-					'@type': 'Brand',
-					name: product.vendor,
-				},
-				offers: {
-					'@type': 'Offer',
-					price: String(product.advertisedEntryPrice.amount),
-					priceCurrency: product.advertisedEntryPrice.currency,
-					url: product.officialWebsite,
-					description: `${product.advertisedEntryPrice.label} advertised front end. Cart opens ${product.schedule.cartOpens}. The free preview is a separate registration, and optional upgrades are not included.`,
-				},
-			},
-			{
 				'@type': 'FAQPage',
 				mainEntity: input.faqs.map((item) => ({
 					'@type': 'Question',
