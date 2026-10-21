@@ -5,7 +5,7 @@
  * Do not deploy until that approval is in hand.
  */
 
-export const productionOrigin = 'https://aiagencyengine.info';
+export const productionOrigin = 'https://www.aiagencyengine.info';
 
 export const product = {
 	name: 'The AI Agency Engine',
