@@ -1,0 +1,124 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import ProsCons from '../../components/ProsCons.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'What is the main advantage of AI Agency Engine?',
+		answer:
+			'You can see the service, not just a tool list: a $47 front end, five live dates, and Murage screenshots of a team proposal, research, held emails, and a schedule you confirm.',
+	},
+	{
+		question: 'What is the main drawback?',
+		answer:
+			'You still have to find local businesses, sell the service, and deliver it. The lesson list, refund terms, and full cost are not published on the public pages.',
+	},
+	{
+		question: 'Is it a good fit if you already have clients?',
+		answer:
+			'It is worth a look if you want to package AI-assisted work as something a business can understand. It is a weak fit if you want the class to supply the clients.',
+	},
+];
+
+const advantages = [
+	{
+		title: 'The workflow is visible',
+		text: 'A website becomes a team proposal, a one-page brief, unsent emails, and a morning brief that waits for a click.',
+	},
+	{
+		title: 'The class is live and dated',
+		text: `Five weekdays, ${product.schedule.masterclass}, at ${product.schedule.masterclassTime}.`,
+	},
+	{
+		title: 'You can preview it free',
+		text: 'Three videos and Murage come with registration. That look is separate from the paid seat.',
+	},
+	{
+		title: 'The entry price is one number',
+		text: `${product.advertisedEntryPrice.label}, with the cart dated ${product.schedule.cartOpens} through ${product.schedule.cartCloses}.`,
+	},
+];
+
+const limitations = [
+	{
+		title: 'You still sell and deliver',
+		text: 'The class does not supply the clients. Someone has to make the offer and keep the work running.',
+	},
+	{
+		title: 'The $47 list is incomplete',
+		text: 'Lessons, templates, and support inside the front end are not itemized.',
+	},
+	{
+		title: 'The total can move',
+		text: 'Optional offers at $37, $97, $197, and $497 are separate from the entry price.',
+	},
+	{
+		title: 'Outcomes stay examples',
+		text: 'Fees such as $500 to $1,000 a month are illustrations from the seller. Refund terms are unpublished.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Pros and Cons: Is It a Fit?"
+	description="AI Agency Engine pros and cons: a visible local-business workflow and a $47 live class, set against the selling you still do and the terms left for checkout."
+	label="Pros and cons"
+	h1="AI Agency Engine Pros and Cons: Is It a Good Fit for You?"
+	crumb="Pros and cons"
+	path="/ai-agency-engine-pros-and-cons/"
+	related={['/is-ai-agency-engine-legit/', '/ai-agency-engine-pricing/', '/ai-agency-engine-murage-demo/']}
+	faqs={faqs}
+	cta="Check the Official Offer"
+	closingTitle="Judge the fit, then open the offer"
+	closingText="If you want a dated look at this local-business service, the public pages are enough to start. If you need the lesson list and refund rule first, read them on the checkout."
+>
+	<p class="lede" slot="lede">
+		The useful question is not whether AI Agency Engine mentions artificial intelligence. It is whether a demonstrated path from a local website to a demo and an email fits work you will actually do. The price and the live dates are specific. The clients are still yours to find.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What stands out, and what you still handle</h2>
+			<ProsCons advantages={advantages} limitations={limitations} />
+			<p class="measure">
+				<a href="/ai-agency-engine-pricing/">Review the AI Agency Engine pricing</a> if the optional rows are the concern. <a href="/is-ai-agency-engine-legit/">The legitimacy check</a> separates those facts from the income examples.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Who this approach is built for</h2>
+			<div class="feature-grid">
+				<article class="feature-card">
+					<h3>Beginners who want one sequence</h3>
+					<p>You want a path from a business website to a demo and an email, and you accept that the day-by-day syllabus is not published yet.</p>
+				</article>
+				<article class="feature-card">
+					<h3>Freelancers who already have conversations</h3>
+					<p>You talk with clients now and want AI-assisted work packaged as a service they can understand, not another tool with no use case.</p>
+				</article>
+				<article class="feature-card">
+					<h3>Agencies adding a service</h3>
+					<p>You already deliver design, SEO, ads, or IT and want to judge whether an install like this belongs beside that work.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Who should wait</h2>
+			<ul class="note-list">
+				<li>You want the class to find clients or guarantee a monthly fee. The materials do not offer that.</li>
+				<li>You will not sell the service or maintain it after the week of {product.schedule.masterclass}.</li>
+				<li>You need the lesson list, refund terms, and tool costs in writing before you spend {product.advertisedEntryPrice.label}.</li>
+			</ul>
+			<p class="measure">
+				<a href="/ai-agency-engine-murage-demo/">See the Murage demo</a> if the screenshots are what you still need to judge. <a href="/ai-agency-engine-for-beginners/">The beginner guide</a> and <a href="/ai-agency-engine-alternatives/">the alternatives</a> cover fit and other ways to learn.
+			</p>
+		</div>
+	</section>
+</GuidePage>

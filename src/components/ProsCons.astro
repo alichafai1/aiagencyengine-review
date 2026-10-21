@@ -1,0 +1,46 @@
+---
+import type { NamedPoint } from '../data/review';
+import Icon from './Icon.astro';
+
+interface Props {
+	advantages: readonly NamedPoint[];
+	limitations: readonly NamedPoint[];
+}
+
+const { advantages, limitations } = Astro.props;
+---
+
+<div class="pros-grid">
+	<div class="pros-col">
+		<h3 class="column-title">
+			<Icon name="check" />
+			What stands out
+		</h3>
+		<ul class="point-list">
+			{
+				advantages.map((item) => (
+					<li>
+						<p class="point-title">{item.title}</p>
+						<p>{item.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+	<div class="limit-col">
+		<h3 class="column-title">
+			<Icon name="limit" />
+			Check this first
+		</h3>
+		<ul class="point-list">
+			{
+				limitations.map((item) => (
+					<li>
+						<p class="point-title">{item.title}</p>
+						<p>{item.text}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</div>

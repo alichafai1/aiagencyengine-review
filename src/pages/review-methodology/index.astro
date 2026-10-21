@@ -1,0 +1,43 @@
+---
+import OfficialLink from '../../components/OfficialLink.astro';
+import TrustPage from '../../components/TrustPage.astro';
+import { launchReviewNote, product } from '../../data/product';
+---
+
+<TrustPage
+	title="How This AI Agency Engine Review Was Prepared"
+	description="How this AI Agency Engine review was prepared: which public pages were checked, which claims stay unverified, and when the dates need another look."
+	h1="How This Review Was Prepared"
+	crumb="Methodology"
+	path="/review-methodology/"
+>
+	<p>
+		The pages on this site were written from public vendor materials and, where a comparison needs it, from the official page of the other program or tool. They are not a report from a purchased seat.
+	</p>
+	<h2>Sources</h2>
+	<p>
+		The product facts come from the <OfficialLink>AI Agency Engine product page</OfficialLink> and the <OfficialLink to="affiliate-info">public launch page</OfficialLink>. Those pages were checked on {product.reviewedOn}.
+	</p>
+	<p>
+		The product page is a free registration. It advertises three preview videos, Murage, and an Early Bird seat. The launch page advertises the {product.advertisedEntryPrice.label} class, the cart window, the live dates, and the optional upgrades. Comparison pages also cite the official pages linked in those articles. Those citations are not offer buttons.
+	</p>
+	<h2>What counts as verified</h2>
+	<p>
+		A price, date, or feature counts when the public page states it. The free registration, the {product.advertisedEntryPrice.label} front end, the cart opening on {product.schedule.cartOpens}, and the class on {product.schedule.masterclass} are in that group.
+	</p>
+	<p>
+		A seller example does not become an independent finding. That includes the $500 to $1,000 monthly fee, the $10,000 to $20,000 month math, the Summit Roofing simulation, and revenue or member figures on other programs.
+	</p>
+	<h2>What stays unverified</h2>
+	<ul class="note-list">
+		<li>The lesson list inside the paid class.</li>
+		<li>Refund terms, replay access, and support.</li>
+		<li>What the optional upgrades contain.</li>
+		<li>Software or AI tools a buyer would pay for separately.</li>
+		<li>Whether a person with no experience can complete the class. The public pages do not say that.</li>
+	</ul>
+	<p>{launchReviewNote}</p>
+	<p>
+		This page is not legal, financial, or business advice. The <a href="/about/">about page</a> explains what this site is, and the <a href="/affiliate-disclosure/">affiliate disclosure</a> explains the offer buttons.
+	</p>
+</TrustPage>

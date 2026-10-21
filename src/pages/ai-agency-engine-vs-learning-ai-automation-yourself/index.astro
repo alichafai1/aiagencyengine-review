@@ -1,0 +1,151 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import InfoLink from '../../components/InfoLink.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+import { sources } from '../../data/sources';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Can you learn AI automation without paying for AI Agency Engine?',
+		answer:
+			'Yes. Make Academy, Zapier Academy, and n8n’s learning paths publish free courses. Those courses teach the tools. They do not include the advertised AI Agency Engine class.',
+	},
+	{
+		question: 'Is the $47 class a Make, Zapier, or n8n course?',
+		answer:
+			'The public pages do not describe it that way. They show Murage, a local-business demo, and a live class. Confirm the tools on the checkout. Do not assume a tool subscription is included.',
+	},
+	{
+		question: 'Who should skip the paid class?',
+		answer:
+			'Someone who wants deep practice in one automation product, and who will design their own service offer, can start with that product’s official academy.',
+	},
+];
+
+const rows = [
+	{
+		need: 'Learn a specific automation tool',
+		training: 'Not what the public class pages itemize.',
+		solo: 'Make, Zapier, and n8n each publish their own courses.',
+	},
+	{
+		need: 'See a service pitch for a local business',
+		training: 'The free videos show a website becoming a demo and a sales email.',
+		solo: 'You would design that offer yourself after you can build the workflow.',
+	},
+	{
+		need: 'A dated live walkthrough',
+		training: `Advertised for ${product.schedule.masterclass}, weekdays at ${product.schedule.masterclassTime}.`,
+		solo: 'The academies describe self-paced lessons, not this class schedule.',
+	},
+	{
+		need: 'A published syllabus',
+		training: 'The five class days are dated. The lesson list is not published.',
+		solo: 'Each academy lists its own courses and paths on its site.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine vs Learning AI Automation Yourself"
+	description="AI Agency Engine vs learning AI automation yourself: the advertised live class beside the official Make, Zapier, and n8n courses."
+	label="Self-study"
+	h1="AI Agency Engine vs Learning AI Automation Yourself"
+	crumb="Vs self-study"
+	path="/ai-agency-engine-vs-learning-ai-automation-yourself/"
+	related={[
+		'/ai-agency-engine-alternatives/',
+		'/how-to-start-an-ai-agency/',
+		'/ai-agency-engine-masterclass/',
+	]}
+	faqs={faqs}
+	cta="Explore AI Agency Engine"
+	closingTitle="Match the spend to the skill you actually want"
+	closingText="If you want the seller’s local-business walkthrough, review the $47 offer and the November 2026 dates. If you want a tool, start with that tool’s official academy."
+>
+	<p class="lede" slot="lede">
+		Learning AI automation yourself and buying AI Agency Engine solve different problems. The academies teach you to build workflows. The advertised class is aimed at turning a local business problem into a demonstration and an offer. Pay for the path that matches the gap you have.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What official self-study actually covers</h2>
+			<div class="feature-grid">
+				<article class="feature-card">
+					<Icon name="workflow" />
+					<h3>Make Academy</h3>
+					<p>
+						<InfoLink href={sources.makeAcademy}>Make Academy</InfoLink> describes free, self-paced courses, including scenarios and AI agents. Its FAQ says no prior experience is required for the fundamentals.
+					</p>
+				</article>
+				<article class="feature-card">
+					<Icon name="training" />
+					<h3>Zapier Academy</h3>
+					<p>
+						<InfoLink href={sources.zapierAcademy}>Zapier Academy</InfoLink> describes free courses, from a first Zap to AI workflows. A free Zapier account saves progress. Courses are self-paced.
+					</p>
+				</article>
+				<article class="feature-card">
+					<Icon name="layers" />
+					<h3>n8n Academy</h3>
+					<p>
+						<InfoLink href={sources.n8nLearning}>n8n’s docs</InfoLink> point to <InfoLink href={sources.n8nAcademy}>n8n Academy</InfoLink> for hands-on courses, quizzes, and certificates. Most practice exercises do not need outside accounts.
+					</p>
+				</article>
+			</div>
+			<p class="measure">
+				Free courses can still sit on top of a paid software plan. This page does not quote those plan prices. Read each product’s current pricing before you build a client offer on it.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>A tool skill is not yet a service</h2>
+			<p class="measure">
+				You can finish a course and still have no one to call. A local business pays for a result it understands: a missed inquiry gets a draft reply, an estimate gets a follow-up, a staff member gets a morning brief. Someone has to choose that problem, show a safe demo, name the limits, and deliver it. The academies do not do that selling for you.
+			</p>
+			<p class="measure">
+				AI Agency Engine’s public pages aim at that second job. The free videos follow a dentist website into a demo and an email. Murage proposes a team and waits for approval. The paid piece is the live class at {product.advertisedEntryPrice.label}, separate from the free registration. The pages do not publish a day-by-day syllabus, so do not treat the class as a hidden Make or n8n curriculum.
+			</p>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">You need</th>
+							<th scope="col">Advertised class</th>
+							<th scope="col">Official tool courses</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => (
+								<tr>
+									<th scope="row">{row.need}</th>
+									<td data-label="Advertised class">{row.training}</td>
+									<td data-label="Official tool courses">{row.solo}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>How to choose</h2>
+			<ul class="note-list">
+				<li>If you cannot yet build a simple workflow, start with the academy for the tool you expect to use.</li>
+				<li>If you can build, but you cannot explain an offer to a local owner, the class preview is the more direct look.</li>
+				<li>If you need the lesson list and refund rule before spending {product.advertisedEntryPrice.label}, read them on the checkout. <a href="/ai-agency-engine-pricing/">The pricing guide</a> separates that price from the free preview.</li>
+			</ul>
+			<p class="measure">
+				<a href="/how-to-start-an-ai-agency/">How to start an AI agency</a> is the practical sequence either path still has to follow.
+			</p>
+		</div>
+	</section>
+</GuidePage>

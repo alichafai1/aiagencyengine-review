@@ -1,0 +1,33 @@
+---
+import OfficialLink from '../../components/OfficialLink.astro';
+import TrustPage from '../../components/TrustPage.astro';
+import { product } from '../../data/product';
+---
+
+<TrustPage
+	title="About This AI Agency Engine Review"
+	description="About this independent AI Agency Engine review: what the site is, what it has not tested, and where the public product pages live."
+	h1="About This Review"
+	crumb="About"
+	path="/about/"
+>
+	<p>
+		This website is an independent review of {product.name}. It is not {product.vendor}’s website, and it is not an official partner page.
+	</p>
+	<p>
+		The articles describe the free preview, Murage, and the advertised {product.advertisedEntryPrice.label} class using the public product site and the public launch page. This review has not purchased a seat, attended the class, or run the software.
+	</p>
+	<p>
+		Screenshots are the vendor’s product images. They show the workflow being advertised. They are not customer results, and they are not a lesson list for the paid class.
+	</p>
+	<h2>What this site does not claim</h2>
+	<p>
+		It does not claim a personal result, a client count, or a rating. Income figures on the sales pages are the seller’s examples. A simulated business on those pages is not a client this site served.
+	</p>
+	<p>
+		The site owner has not published a personal name, company, email, or postal address for this review. Do not treat the vendor’s company, or the partner contact on the launch page, as the contact for this website.
+	</p>
+	<p>
+		Read <a href="/review-methodology/">how this review was prepared</a> and the <a href="/affiliate-disclosure/">affiliate disclosure</a>. The product itself is on the <OfficialLink>official product page</OfficialLink>.
+	</p>
+</TrustPage>

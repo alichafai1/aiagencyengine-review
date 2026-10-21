@@ -1,0 +1,61 @@
+---
+import CtaLink from './CtaLink.astro';
+
+const links = [
+	{ href: '/', label: 'Review' },
+	{ href: '/ai-agency-engine-pricing/', label: 'Pricing' },
+	{ href: '/ai-agency-engine-masterclass/', label: 'Live class' },
+	{ href: '/ai-agency-engine-murage-demo/', label: 'Murage' },
+	{ href: '/#guides', label: 'Guides' },
+];
+---
+
+<header class="site-header">
+	<div class="container header-inner">
+		<a class="wordmark" href="/">
+			<span class="wordmark-kicker">Independent review</span>
+			<span class="wordmark-name">AI Agency Engine Review</span>
+		</a>
+		<nav class="desktop-nav" aria-label="Primary">
+			<ul class="nav-list">
+				{
+					links.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))
+				}
+			</ul>
+			<CtaLink>Check the Official Offer</CtaLink>
+		</nav>
+		<details class="mobile-nav">
+			<summary class="nav-toggle">Menu</summary>
+			<nav aria-label="Primary">
+				<ul class="nav-list">
+					{
+						links.map((link) => (
+							<li>
+								<a href={link.href}>{link.label}</a>
+							</li>
+						))
+					}
+				</ul>
+				<CtaLink>Check the Official Offer</CtaLink>
+			</nav>
+		</details>
+	</div>
+</header>
+
+<script>
+	const panel = document.querySelector('.mobile-nav');
+	if (panel instanceof HTMLDetailsElement) {
+		panel.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', () => {
+				panel.open = false;
+			});
+		});
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') panel.open = false;
+		});
+	}
+</script>

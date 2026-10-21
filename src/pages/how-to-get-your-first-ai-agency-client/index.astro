@@ -1,0 +1,106 @@
+---
+import CtaLink from '../../components/CtaLink.astro';
+import GuidePage from '../../components/GuidePage.astro';
+import Shot from '../../components/Shot.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'How do you get a first AI agency client?',
+		answer:
+			'Choose a niche, study one public task, prepare a small demo that a person still approves, and send a short note to a relevant owner. A template does not create the reply.',
+	},
+	{
+		question: 'Should the first email make income promises?',
+		answer:
+			'No. Describe the task you noticed and the demo you can show. Leave fees, savings, and new customers out until you have agreed a scope.',
+	},
+	{
+		question: 'Does Murage send the outreach for you?',
+		answer:
+			'The public inbox demo drafts replies and holds them until someone approves. It is not a mailbox that sends on its own, and it is not proof the paid class includes a client list.',
+	},
+];
+---
+
+<GuidePage
+	title="How to Get Your First AI Agency Client"
+	description="How to get your first AI agency client: research one local business, build a safe demo, and send a short outreach note without fake promises."
+	label="First client"
+	h1="How to Get Your First AI Agency Client: A Practical Outreach Plan"
+	crumb="First client"
+	path="/how-to-get-your-first-ai-agency-client/"
+	related={['/how-to-start-an-ai-agency/', '/ai-agency-engine-murage-demo/', '/ai-agency-engine-use-cases/']}
+	faqs={faqs}
+	cta="Check the Official Offer"
+	closingTitle="Use the plan, then inspect a training option if you want one"
+	closingText="The outreach steps work without a course. If you want Sean Donahoe’s demo-and-email approach, review the AI Agency Engine offer and confirm the November 2026 class details."
+	showTopCta={false}
+>
+	<p class="lede" slot="lede">
+		Your first AI agency client comes from a specific business, a task you can point to, and a note that respects the owner’s time. A blast that promises revenue is the wrong tool. This plan is the slower one that you can actually defend.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>Research before you write</h2>
+			<ul class="note-list">
+				<li><strong>Pick a niche you can talk about.</strong> Ten roofers or ten clinics beat a mixed list of every shop in town.</li>
+				<li><strong>Read the public website.</strong> Note how customers ask for help: a form, a phone number, or a quote request.</li>
+				<li><strong>Name one gap without inventing their books.</strong> Unanswered form topics and old estimates are fair observations. Their profit is not.</li>
+				<li><strong>Skip businesses you cannot serve.</strong> If the task needs medical, legal, or payment data you are not ready to handle, choose another task.</li>
+			</ul>
+			<p class="measure">
+				<a href="/how-to-start-an-ai-agency/">The startup roadmap</a> sits underneath this list. Outreach without a niche is just email volume.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Show a small demo, then ask</h2>
+			<p class="measure">
+				Build the demo on public or sample information. A useful version drafts a first reply or a follow-up and stops for approval. The vendor inbox screen is the picture of that idea: messages are drafted, and nothing goes out until a person agrees.
+			</p>
+			<Shot
+				src="/images/vendor/inbox-drafts.webp"
+				alt="Inbox drafts held until the owner answers."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. Drafts stay unsent. This is not a client this site signed."
+			/>
+			<h3>An outreach note you can adapt</h3>
+			<article class="feature-card">
+				<p><strong>Subject:</strong> A follow-up idea for your inspection requests</p>
+				<p>Hi [Name],</p>
+				<p>
+					I looked at [business] and noticed inspection requests come in through the site. I prepared a short example of a first reply and an estimate follow-up. Nothing sends unless you approve it.
+				</p>
+				<p>If that task still sits with your office, I can walk through the example in ten minutes.</p>
+				<p>[Your name]</p>
+			</article>
+			<p class="measure">
+				This is an example, not a script from a course, and sending it does not guarantee a meeting. Change the task so it matches the site you actually read. Do not paste it to a hundred addresses.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Follow up, then talk about the work</h2>
+			<ul class="note-list">
+				<li>One polite follow-up is enough if there is no reply. Stop after that.</li>
+				<li>On a call, agree the task, the hours, the data you will not touch, and how a person checks the output.</li>
+				<li>Price a pilot you can deliver. A monthly idea can wait until the pilot works.</li>
+				<li>Do not invent reviews, savings, or other clients. If you have no case study, say the demo is a sample.</li>
+			</ul>
+			<p class="measure">
+				Murage’s public demos show research, a team proposal, and held email drafts. They do not list the lessons inside the {product.advertisedEntryPrice.label} class. If you want {product.vendor}’s version of this path, that is a separate decision. <a href="/ai-agency-engine-murage-demo/">See the Murage demo</a>, then open the offer only if the checkout matches what you need.
+			</p>
+			<div class="cta-row">
+				<CtaLink>Check the Official Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+</GuidePage>

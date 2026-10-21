@@ -1,0 +1,132 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'When is the AI Agency Engine 5-day masterclass?',
+		answer: `The live class is advertised for ${product.schedule.masterclass}, ${product.schedule.masterclassDays}, at ${product.schedule.masterclassTime}. Those dates belong to this launch. They are not a permanent calendar.`,
+	},
+	{
+		question: 'Are the free videos the masterclass?',
+		answer:
+			`No. The three videos run ${product.schedule.prelaunchVideos} at ${product.schedule.previewTime}. They are a preview. The paid class is the following week.`,
+	},
+	{
+		question: 'Is there a published daily syllabus?',
+		answer:
+			'No. The pages name the class window and the time of day. They do not list what is taught on each of the five days, and attendance is not a guaranteed client.',
+	},
+];
+
+const timeline = [
+	{
+		index: '01',
+		icon: 'present' as const,
+		title: 'Free videos',
+		text: `${product.schedule.prelaunchVideos}, at ${product.schedule.previewTime}. Watch the dentist demo, the path to a monthly bill, and a preview of the Early Bird room. This is not the class.`,
+	},
+	{
+		index: '02',
+		icon: 'calendar' as const,
+		title: 'Early Bird session',
+		text: `${product.schedule.earlySession} at ${product.schedule.earlySessionTime}. The $497 Complete Package is advertised only here. Sean reads a Kickstart Kit code once.`,
+	},
+	{
+		index: '03',
+		icon: 'price' as const,
+		title: 'Cart opens',
+		text: `${product.schedule.cartOpens} at ${product.schedule.cartOpensTime}. The ${product.advertisedEntryPrice.label} class is scheduled to go on sale. The cart is not open before that time.`,
+	},
+	{
+		index: '04',
+		icon: 'limit' as const,
+		title: 'Cart closes',
+		text: `${product.schedule.cartCloses} at ${product.schedule.cartClosesTime}. The launch page calls this a hard close, before the first class morning.`,
+	},
+	{
+		index: '05',
+		icon: 'training' as const,
+		title: 'Live class',
+		text: `${product.schedule.masterclass}, ${product.schedule.masterclassDays}, at ${product.schedule.masterclassTime}. A day-by-day lesson list is not published.`,
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine 5-Day Masterclass: Dates and Format"
+	description="AI Agency Engine 5-day masterclass: the November 9–13 live class, how it differs from the free videos, and the November 3–8 cart window."
+	label="Live class"
+	h1="AI Agency Engine 5-Day Masterclass: Dates, Format, and What to Expect"
+	crumb="Live class"
+	path="/ai-agency-engine-masterclass/"
+	related={['/ai-agency-engine-pricing/', '/ai-agency-engine-murage-demo/', '/ai-agency-engine-bonuses/']}
+	faqs={faqs}
+	cta="Explore the Masterclass Offer"
+	closingTitle="Use these dates for this launch"
+	closingText={`The class is advertised for ${product.schedule.masterclass} at ${product.schedule.masterclassTime}. If the offer page shows a different window, trust that page, then confirm what the $47 checkout includes.`}
+>
+	<p class="lede" slot="lede">
+		The AI Agency Engine 5-day masterclass is the live class {product.vendor} advertises for {product.schedule.masterclass}, weekdays at {product.schedule.masterclassTime}. It is the paid part of this launch. The three free videos the week before are a preview of the method, not the class itself.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>The schedule this launch publishes</h2>
+			<p class="measure">
+				Times are Eastern. The cart is a window that shuts before the first class morning. <a href="/ai-agency-engine-pricing/">Review the AI Agency Engine pricing</a> for what {product.advertisedEntryPrice.label} does and does not include.
+			</p>
+			<ol class="steps">
+				{
+					timeline.map((step) => (
+						<li>
+							<span class="step-badge">{step.index}</span>
+							<div class="step-body">
+								<h3>
+									<Icon name={step.icon} />
+									{step.title}
+								</h3>
+								<p>{step.text}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>What you can reasonably hope to explore</h2>
+			<p class="measure">
+				The free videos show the shape of the work. Video 1 turns a dentist website into an AI front desk and a sales email. Video 2 follows that demo toward a monthly bill. Video 3 previews the Early Bird room. The paid class is the live week after that. A reasonable hope is a closer look at how a website becomes a demonstration and how that demonstration becomes an offer a local business can understand.
+			</p>
+			<p class="measure">
+				The pages do not publish a lesson for each of the five days, and showing up is not a client. <a href="/ai-agency-engine-bonuses/">The bonuses guide</a> keeps the free list separate from paid extras. <a href="/ai-agency-engine-murage-demo/">The Murage demo</a> is the screenshot record of the agent those videos talk about.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>The Intensive is not day six</h2>
+			<p class="measure">
+				The First Client Intensive is a separate $497 offer: one live day with Sean on {product.schedule.intensiveWeekday}, {product.schedule.intensiveDate}. It is not part of the five-day class. The Complete Package is also separate, and it is tied to the {product.schedule.earlySession} morning session.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Check these before you join</h2>
+			<ul class="note-list">
+				<li>That the cart is open. The advertised open is {product.schedule.cartOpens} at {product.schedule.cartOpensTime}.</li>
+				<li>Whether you can attend live at {product.schedule.masterclassTime} on those five weekdays.</li>
+				<li>Whether a replay is included. The pages reviewed here do not say.</li>
+				<li>The lesson list, refund terms, and any tool you must bring.</li>
+			</ul>
+		</div>
+	</section>
+</GuidePage>

@@ -1,0 +1,37 @@
+---
+import TrustPage from '../../components/TrustPage.astro';
+import { product } from '../../data/product';
+---
+
+<TrustPage
+	title="Terms of Use for This Review"
+	description="Terms of use for this AI Agency Engine review: the pages are informational, prices can change, and the site does not promise business results."
+	h1="Terms of Use"
+	crumb="Terms"
+	path="/terms/"
+>
+	<p>
+		These pages are an independent review of {product.name}. You may read them for your own decision. You may not present this site as the seller’s website or as an official partner page.
+	</p>
+	<h2>No promise of a result</h2>
+	<p>
+		Nothing here is legal, financial, or business advice. The class does not come with a client, a monthly fee, or an income. Examples on the sales pages stay examples.
+	</p>
+	<p>
+		Prices, dates, and included materials can change. The seller’s current page controls the offer. {product.advertisedEntryPrice.label} is the advertised front end for this launch, not a permanent catalog price.
+	</p>
+	<h2>Affiliate links</h2>
+	<p>
+		Offer buttons may earn this site a commission if you buy. That relationship is explained in the <a href="/affiliate-disclosure/">affiliate disclosure</a>. Using an offer button is optional.
+	</p>
+	<h2>Materials</h2>
+	<p>
+		Product screenshots are the vendor’s images, shown so you can see the advertised workflow. They are not a license to reuse the seller’s brand, and they are not evidence of a completed sale.
+	</p>
+	<p>
+		The site can be corrected when a public page changes. A date that has passed should not be read as a live cart. This page is not a contract with the seller, and it is not legal advice.
+	</p>
+	<p>
+		The <a href="/privacy/">privacy policy</a> covers what this static site does and does not collect.
+	</p>
+</TrustPage>

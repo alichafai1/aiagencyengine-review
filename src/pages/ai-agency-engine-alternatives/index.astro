@@ -1,0 +1,132 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import InfoLink from '../../components/InfoLink.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+import { sources } from '../../data/sources';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'What is the best AI Agency Engine alternative?',
+		answer:
+			'It depends on the job. A live class fits someone who wants a dated service walkthrough. Official tool courses fit someone who wants to learn Make, Zapier, or n8n. A free community fits someone who wants templates and a network before paying for a program.',
+	},
+	{
+		question: 'Is there a free way to start?',
+		answer:
+			'Yes. AI Agency Engine advertises a free video registration, the AI Automation Agency Hub lists its Skool community as free, and Make, Zapier, and n8n publish free learning paths. Free access is not the same as a client.',
+	},
+	{
+		question: 'Does a cheaper path include the same class?',
+		answer: `No. The ${product.advertisedEntryPrice.label} class, the free tool academies, and the Hub are different products. Compare what each page actually describes before you pay.`,
+	},
+];
+
+const rows = [
+	{
+		path: 'AI Agency Engine',
+		format: `Free preview videos, Murage, and an advertised live class on ${product.schedule.masterclass}.`,
+		cost: `${product.advertisedEntryPrice.label} front end for this launch. Optional upgrades are separate. The cart is scheduled for ${product.schedule.cartOpens} to ${product.schedule.cartCloses}.`,
+		fit: 'You want a local-business demo and a dated class, and you will confirm the lesson list at checkout.',
+	},
+	{
+		path: 'Learn the tools yourself',
+		format: 'Self-paced courses from Make Academy, Zapier Academy, and n8n Academy.',
+		cost: 'Those academies describe the courses as free. Software plans can still cost money, and those prices are separate.',
+		fit: 'You want to build workflows and you are comfortable turning that skill into an offer on your own.',
+	},
+	{
+		path: 'Another structured program',
+		format: 'The AI Automation Agency Hub is a free Skool community. Its page also links to the AAA Accelerator, which describes coaching and a multi-stage path.',
+		cost: 'The Hub page lists the community as free. The accelerator page we reviewed does not publish a price. It asks visitors to book a strategy call.',
+		fit: 'You want templates, a large community, or a longer implementation program, and you will read the current terms yourself.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Alternatives for 2026"
+	description="AI Agency Engine alternatives: compare the advertised live class with free tool academies and the AI Automation Agency Hub."
+	label="Alternatives"
+	h1="AI Agency Engine Alternatives: Which Approach Fits Your Goals?"
+	crumb="Alternatives"
+	path="/ai-agency-engine-alternatives/"
+	related={[
+		'/ai-agency-engine-vs-ai-automation-agency-hub/',
+		'/ai-agency-engine-vs-learning-ai-automation-yourself/',
+		'/ai-agency-engine-pricing/',
+	]}
+	faqs={faqs}
+	cta="Check the Official Offer"
+	closingTitle="Pick the path, then read the current offer"
+	closingText="If a dated local-business class is the path you want, open the AI Agency Engine offer and confirm what the $47 checkout includes. These dates are for the November 2026 launch."
+>
+	<p class="lede" slot="lede">
+		The useful AI Agency Engine alternative is the one that matches the skill you still need. Some readers need a structured look at selling an AI service. Others need tool practice. Others want a community or a longer program. None of these paths hands you a client.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>Three ways to learn this work</h2>
+			<p class="measure">
+				The notes below come from the public product pages and the official learning pages linked here. <a href="/">The AI Agency Engine review</a> covers the {product.advertisedEntryPrice.label} class. <a href="/ai-agency-engine-vs-learning-ai-automation-yourself/">The self-study comparison</a> and <a href="/ai-agency-engine-vs-ai-automation-agency-hub/">the Hub comparison</a> go further on those two paths.
+			</p>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">Path</th>
+							<th scope="col">Format</th>
+							<th scope="col">Cost you can verify</th>
+							<th scope="col">Who it may suit</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => (
+								<tr>
+									<th scope="row">{row.path}</th>
+									<td data-label="Format">{row.format}</td>
+									<td data-label="Cost you can verify">{row.cost}</td>
+									<td data-label="Who it may suit">{row.fit}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>When a live class is the clearer path</h2>
+			<p class="measure">
+				Official tutorials teach a product. They rarely show you how to choose a local business, turn one dropped task into a demonstration, and explain a monthly offer. That is the gap the AI Agency Engine pages aim at: a dentist website becomes a front-desk demo and a sales email, then a five-day live class is advertised for {product.schedule.masterclass}.
+			</p>
+			<p class="measure">
+				A live format helps if you want dates, a walkthrough, and a reason to practice the pitch in the same week. It does not help if you only want to master one automation tool, or if you need the full lesson list before you spend {product.advertisedEntryPrice.label}. That list is not published on the public pages.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>When another path fits better</h2>
+			<ul class="note-list">
+				<li>
+					<strong>Tool practice.</strong> <InfoLink href={sources.makeAcademy}>Make Academy</InfoLink>, <InfoLink href={sources.zapierAcademy}>Zapier Academy</InfoLink>, and <InfoLink href={sources.n8nLearning}>n8n’s learning paths</InfoLink> are the direct way to learn those products.
+				</li>
+				<li>
+					<strong>A free community.</strong> The <InfoLink href={sources.aaaHub}>AI Automation Agency Hub</InfoLink> lists membership as free and describes templates, playbooks, and a member network.
+				</li>
+				<li>
+					<strong>A longer program.</strong> The <InfoLink href={sources.aaaAccelerator}>AAA Accelerator</InfoLink> describes builds, outreach, sales, and coaching. Read that page for the current call and terms. Do not assume it matches the {product.advertisedEntryPrice.label} class.
+				</li>
+			</ul>
+			<p class="measure">
+				AI Agency Engine is a fit when you want this seller’s local-business demonstration and you accept a launch-window class. It is not a fit for every beginner, and it is not automatically better than learning the tools or joining another program.
+			</p>
+		</div>
+	</section>
+</GuidePage>

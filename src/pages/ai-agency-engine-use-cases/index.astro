@@ -1,0 +1,124 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import Shot from '../../components/Shot.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Are these use cases included in the $47 class?',
+		answer:
+			'No. They are service ideas a local agency could explore. The public pages do not say the paid syllabus contains each one. Confirm the lesson list on the checkout.',
+	},
+	{
+		question: 'Are the screenshots real client results?',
+		answer:
+			'No. They are vendor demonstrations. The roofing walkthrough is labeled a simulated test. Do not present those businesses as customers you served.',
+	},
+	{
+		question: 'What should a person still check?',
+		answer:
+			'Private data, anything that sends or spends money, and any claim about time saved. A draft is not a finished service until the owner approves the scope.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Services for Local Businesses: Practical Ideas"
+	description="AI services for local businesses: inquiry drafts, estimate follow-up, research briefs, and morning summaries, kept separate from the paid class syllabus."
+	label="Use cases"
+	h1="AI Services for Local Businesses: Practical Ideas an AI Agency Could Explore"
+	crumb="Local services"
+	path="/ai-agency-engine-use-cases/"
+	related={['/ai-agency-engine-murage-demo/', '/how-to-start-an-ai-agency/', '/ai-agency-engine-pricing/']}
+	faqs={faqs}
+	cta="Review the Available Offer"
+	closingTitle="Turn one idea into a demo you can explain"
+	closingText="Pick one task a local business already feels. If you want the seller’s version of that demo, review the AI Agency Engine offer and the November 2026 class window."
+>
+	<p class="lede" slot="lede">
+		Local businesses rarely ask for an AI platform. They ask why calls, forms, and estimates sit. The service ideas below start from those tasks. They are concepts you can test. They are not a syllabus for the {product.advertisedEntryPrice.label} class, and the pictures are vendor demonstrations, not paying clients.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>Routine inquiries</h2>
+			<p class="measure">
+				A form or inbox fills up while the owner is on a job. An assistant can draft a first reply that asks for the missing detail and books nothing until a person agrees. You still need a rule for urgent or sensitive messages, and you should not let the draft invent prices.
+			</p>
+			<Shot
+				src="/images/vendor/inbox-drafts.webp"
+				alt="Inbox drafts held until the owner answers."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. Replies are drafted and held."
+			/>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>A team proposal the owner can react to</h2>
+			<p class="measure">
+				After you read a site, name a few roles that match the work, such as a responder and a follow-up assistant. The useful moment is the proposal, because the owner can say yes or no before anything runs. The portrait in the product is artwork, not a staff member, and the proposal is not a hire.
+			</p>
+			<Shot
+				src="/images/vendor/team-proposal.webp"
+				alt="Ember proposes four assistants for a dental research brief and waits for approval."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. The team waits for approval."
+			/>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Estimate follow-up and research briefs</h2>
+			<p class="measure">
+				Estimates that sit for weeks are a common local gap. A follow-up draft can remind the customer what was quoted and ask if they want the work scheduled. A person should check the number before it is used. Separately, a one-page brief can collect public sources before you decide whether a niche is even worth a pitch. In the dental demo, that brief is not an automatic yes.
+			</p>
+			<Shot
+				src="/images/vendor/research-onepager.webp"
+				alt="Saved research note on whether to sell to dental practices."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. Example research, with sources marked."
+			/>
+			<p class="measure">
+				The Summit Roofing sequence on the offer page is the same pattern, and the page labels it a simulation. Use it as a teaching picture. Do not claim that company paid you.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>A morning summary for staff</h2>
+			<p class="measure">
+				A weekday brief can collect overnight requests so the first person in the office is not starting from a blank inbox. The demo keeps that brief pending until someone confirms it. Staff still need a way to spot a wrong summary, and the routine should not message customers by itself.
+			</p>
+			<Shot
+				src="/images/vendor/routine-morning-brief.webp"
+				alt="Confirmation prompt for a weekday 7:00 a.m. morning brief."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. The brief waits for confirmation."
+			/>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>How to present one of these services</h2>
+			<ul class="note-list">
+				<li>Choose one task the business already recognizes.</li>
+				<li>Show a draft, not a promise of revenue.</li>
+				<li>Say who approves the output and what data you will not touch.</li>
+				<li>Agree a small pilot before you talk about a monthly retainer.</li>
+			</ul>
+			<p class="measure">
+				<a href="/ai-agency-engine-murage-demo/">The Murage demo</a> is the longer look at these screens. <a href="/how-to-get-your-first-ai-agency-client/">The first-client plan</a> is how you ask for the conversation. AI Agency Engine is an optional class if you want {product.vendor}’s walkthrough of that path. It does not include these ideas by default.
+			</p>
+		</div>
+	</section>
+</GuidePage>

@@ -1,0 +1,129 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Is AI Agency Engine a real offer?',
+		answer: `Yes. ${product.vendor} is the named vendor, the product site names ADD Marketing Group, LLC, and the pages publish a ${product.advertisedEntryPrice.label} price and a class schedule. That shows a real product launch. It does not prove the training produces clients.`,
+	},
+	{
+		question: 'Did this review test the class?',
+		answer:
+			'No. This page is based on the public product site and the public launch details. It did not purchase a seat, attend the class, or run Murage.',
+	},
+	{
+		question: 'Do the income examples prove it works?',
+		answer:
+			'No. The seller uses $500 to $1,000 a month per client, and a $1,000 fee in the Summit Roofing simulation, as illustrations. They are not customer earnings this review verified.',
+	},
+];
+
+const rows = [
+	{
+		verified: `${product.vendor} is named as the vendor, and the product site names ADD Marketing Group, LLC.`,
+		open: 'Career and sales totals on the partner page were not audited here.',
+	},
+	{
+		verified: `A ${product.advertisedEntryPrice.label} front end is advertised, with a cart window of ${product.schedule.cartOpens} to ${product.schedule.cartCloses}.`,
+		open: 'Lessons, support, and refund terms inside that price are not itemized.',
+	},
+	{
+		verified: `A live class is scheduled for ${product.schedule.masterclass}, weekdays at ${product.schedule.masterclassTime}.`,
+		open: 'No day-by-day syllabus is published, and this review has not attended.',
+	},
+	{
+		verified: 'Murage screenshots show a team proposal, a research page, held email drafts, and a morning brief that waits for confirmation.',
+		open: 'Those demos are not described as the full contents of the paid seat.',
+	},
+	{
+		verified: `Optional offers are priced at $37, $97, $197, and $497. The Complete Package is limited to the ${product.schedule.earlySession}, ${product.schedule.earlySessionTime} session.`,
+		open: 'Most of those offers do not describe what the buyer receives.',
+	},
+	{
+		verified: 'Summit Roofing is labeled a simulated test, with an illustrated $1,000 monthly fee.',
+		open: 'That fee, and the $10,000 to $20,000 headlines, are not verified results.',
+	},
+];
+---
+
+<GuidePage
+	title="Is AI Agency Engine Legit? What the Public Offer Shows"
+	description="Is AI Agency Engine legit? A named seller, a $47 class, and Murage demos you can inspect, separated from income claims that remain examples."
+	label="Legitimacy"
+	h1="Is AI Agency Engine Legit? What We Could Verify Before You Pay"
+	crumb="Legitimacy"
+	path="/is-ai-agency-engine-legit/"
+	related={['/ai-agency-engine-pros-and-cons/', '/ai-agency-engine-pricing/', '/ai-agency-engine-masterclass/']}
+	faqs={faqs}
+	cta="See the Current Offer Details"
+	closingTitle="A real offer is still worth reading at checkout"
+	closingText="You can confirm the seller, the $47 price, and the dates. Open the current offer to see the lesson list, the refund rule, and the real total."
+>
+	<p class="lede" slot="lede">
+		AI Agency Engine is a real, dated offer from {product.vendor}, with a {product.advertisedEntryPrice.label} front end and a live class on the calendar. The Murage screenshots show a specific workflow. The income headlines are the seller’s math, not a result this review verified.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What the offer actually is</h2>
+			<p class="measure">
+				The product is marketed as a way to offer AI-assisted work to local businesses: research a website, show a demo, and prepare the email. The free registration covers three videos, Murage, and an Early Bird seat. The paid piece is the front end and the five-day class. <a href="/ai-agency-engine-pricing/">Review the AI Agency Engine pricing</a> before treating every number on the sales page as one purchase.
+			</p>
+			<p class="measure">
+				The partner page also states large career totals for the vendor. This review did not audit those figures, so they stay outside the verified column.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>What we could verify, and what you should still check</h2>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">What the public pages show</th>
+							<th scope="col">What is still open</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => (
+								<tr>
+									<td data-label="What the public pages show">{row.verified}</td>
+									<td data-label="What is still open">{row.open}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>The $1,000 example is a pitch, not proof of earnings</h2>
+			<p class="measure">
+				The offer page walks Murage through Summit Roofing and labels the charge at $1,000 a month. It calls the walkthrough a simulated test. A sample price in a demo is not a customer result, and multiplying it into $10,000 or $20,000 a month does not make it one.
+			</p>
+			<p class="measure">
+				That leaves a practical conclusion. The offer is specific enough to inspect: a named seller, a published price, and a workflow you can look at. It is not specific enough to treat the income examples as evidence. <a href="/ai-agency-engine-pros-and-cons/">The pros and cons</a> turn that into a fit question. <a href="/ai-agency-engine-masterclass/">The live class dates</a> are schedule claims, not a lesson plan. <a href="/review-methodology/">How this review was prepared</a> lists the sources.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Read these on the order page</h2>
+			<ul class="note-list">
+				<li>The checkout total, including any bump that is already selected.</li>
+				<li>The refund terms, which are not stated on the pages reviewed here.</li>
+				<li>The lesson list for the {product.advertisedEntryPrice.label} seat.</li>
+				<li>Any AI subscription you would pay yourself.</li>
+			</ul>
+		</div>
+	</section>
+</GuidePage>

@@ -1,0 +1,36 @@
+---
+import { product } from '../data/product';
+import CtaLink from './CtaLink.astro';
+---
+
+<aside class="sticky-offer" aria-label="Advertised offer" hidden>
+	<div>
+		<p class="sticky-kicker">Advertised entry price</p>
+		<p class="sticky-price">{product.advertisedEntryPrice.label}</p>
+		<p class="sticky-note">Cart opens {product.schedule.cartOpens}. Upgrades are extra.</p>
+	</div>
+	<CtaLink>View the $47 Offer</CtaLink>
+</aside>
+
+<script>
+	const bar = document.querySelector('.sticky-offer');
+	const trigger = document.querySelector('.hero-actions');
+
+	if (!(bar instanceof HTMLElement)) {
+		/* Offer bar is omitted on trust pages. */
+	} else if (trigger instanceof HTMLElement && 'IntersectionObserver' in window) {
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				bar.hidden = entry.isIntersecting;
+			},
+			{ rootMargin: '0px 0px -72px 0px' },
+		);
+		observer.observe(trigger);
+	} else {
+		const reveal = () => {
+			bar.hidden = window.scrollY < 320;
+		};
+		reveal();
+		document.addEventListener('scroll', reveal, { passive: true });
+	}
+</script>

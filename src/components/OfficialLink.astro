@@ -1,0 +1,16 @@
+---
+import { product } from '../data/product';
+
+interface Props {
+	to?: 'website' | 'affiliate-info';
+	class?: string;
+}
+
+const { to = 'website', class: className } = Astro.props;
+const href = to === 'website' ? product.officialWebsite : product.affiliateInfoUrl;
+---
+
+<a class={className} href={href} target="_blank" rel="noopener noreferrer">
+	<slot />
+	<span class="sr-only"> (opens in a new tab)</span>
+</a>

@@ -1,0 +1,29 @@
+---
+import { guides } from '../data/guides';
+import { product } from '../data/product';
+import { trustPages } from '../data/trust';
+import OfficialLink from './OfficialLink.astro';
+---
+
+<footer class="site-footer">
+	<div class="container footer-top">
+		<div>
+			<p class="footer-brand">AI Agency Engine Review</p>
+			<p class="measure">
+				An independent review of {product.name}. Not {product.vendor}'s website, and not an official partner page. Offer buttons are affiliate links. A purchase through one may earn this site a commission.
+			</p>
+		</div>
+		<div class="footer-links">
+			<nav class="footer-nav" aria-label="Guides">
+				<p class="footer-label">Guides</p>
+				<a href="/">AI Agency Engine review</a>
+				{guides.map((guide) => <a href={guide.href}>{guide.title}</a>)}
+				<OfficialLink>Official product page</OfficialLink>
+			</nav>
+			<nav class="footer-nav" aria-label="About this site">
+				<p class="footer-label">About this site</p>
+				{trustPages.map((page) => <a href={page.href}>{page.label}</a>)}
+			</nav>
+		</div>
+	</div>
+</footer>

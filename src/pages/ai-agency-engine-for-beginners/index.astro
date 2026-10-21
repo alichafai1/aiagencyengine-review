@@ -1,0 +1,117 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import Shot from '../../components/Shot.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Can a beginner use AI Agency Engine?',
+		answer:
+			'The public demos start from a business website rather than from code. The paid class does not publish prerequisites, so a beginner should watch the free preview and read the checkout before paying.',
+	},
+	{
+		question: 'Does the class find your first client?',
+		answer:
+			'No. You still choose a business, explain the offer, and deliver the work. The screenshots show a workflow. They are not a client list.',
+	},
+	{
+		question: 'What should a beginner confirm first?',
+		answer: `The lesson list inside the ${product.advertisedEntryPrice.label} seat, the refund terms, and any software you would pay for yourself. Those details are not itemized on the public pages.`,
+	},
+];
+
+const steps = [
+	{
+		index: '01',
+		icon: 'search' as const,
+		title: 'Start with a real website',
+		text: 'Pick one local business and read what it already offers. The demos begin there, not in a blank code editor.',
+	},
+	{
+		index: '02',
+		icon: 'assistants' as const,
+		title: 'Propose a small team',
+		text: 'Murage lines up named assistants and waits for approval. A beginner can see the idea before anything runs.',
+	},
+	{
+		index: '03',
+		icon: 'email' as const,
+		title: 'Draft the explanation',
+		text: 'The inbox demo writes a reply and holds it. You still have to say what the service does and what it will not do.',
+	},
+	{
+		index: '04',
+		icon: 'user' as const,
+		title: 'Sell and deliver it yourself',
+		text: 'A clear demo is the start of a conversation. The owner still has to agree, and you still have to do the work.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine for Beginners: What to Know"
+	description="Is AI Agency Engine suitable for beginners? What the public demos show, what you still have to sell, and what the $47 class does not list."
+	label="Beginners"
+	h1="Is AI Agency Engine Suitable for Beginners? What to Know First"
+	crumb="For beginners"
+	path="/ai-agency-engine-for-beginners/"
+	related={['/how-to-start-an-ai-agency/', '/ai-agency-engine-pros-and-cons/', '/ai-agency-engine-murage-demo/']}
+	faqs={faqs}
+	cta="Check the Official Offer"
+	closingTitle="Watch the preview, then decide on the class"
+	closingText="A beginner can learn the shape of the offer from the free videos and Murage. Open the $47 offer only after the checkout shows the lessons and the refund rule. Those November 2026 dates are for this launch."
+>
+	<p class="lede" slot="lede">
+		AI Agency Engine can be a beginner’s first look at an AI service, because the public demos start with a business website, a proposed team, and an email that waits for approval. It is not a promise that no experience is required. The paid class does not publish that, and using a tool is not the same as running a business.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What a beginner can actually see</h2>
+			<p class="measure">
+				{product.vendor} shows Murage proposing assistants for a research question and stopping for a yes. That is easier to follow than a pile of tool menus. It is still a vendor demonstration. <a href="/ai-agency-engine-murage-demo/">The Murage demo</a> walks through the other screens.
+			</p>
+			<Shot
+				src="/images/vendor/team-proposal.webp"
+				alt="Ember proposes four assistants for a dental research brief and waits for approval."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. A beginner can see the team proposal. It is not a finished client."
+			/>
+			<ol class="steps">
+				{
+					steps.map((step) => (
+						<li>
+							<span class="step-badge">{step.index}</span>
+							<div class="step-body">
+								<h3>
+									<Icon name={step.icon} />
+									{step.title}
+								</h3>
+								<p>{step.text}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>A readiness check before you pay</h2>
+			<ul class="note-list">
+				<li>You can explain one business task in plain language, such as a missed call or an estimate that sits.</li>
+				<li>You will talk to owners yourself. The class does not supply the meetings.</li>
+				<li>You can name what the demo will not do, so you do not promise a result you cannot deliver.</li>
+				<li>You can attend a live class at {product.schedule.masterclassTime} on {product.schedule.masterclass}, or you know the pages do not promise a replay.</li>
+				<li>You have read the checkout for the lesson list, the refund rule, and any tool you must pay for. <a href="/ai-agency-engine-pricing/">The pricing page</a> keeps the {product.advertisedEntryPrice.label} seat separate from the free preview.</li>
+			</ul>
+			<p class="measure">
+				If those points are still early, use the free registration first. <a href="/how-to-start-an-ai-agency/">How to start an AI agency</a> is the sequence to practice before you buy a longer program.
+			</p>
+		</div>
+	</section>
+</GuidePage>

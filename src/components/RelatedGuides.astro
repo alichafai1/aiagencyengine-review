@@ -1,0 +1,27 @@
+---
+import { guidesByHref } from '../data/guides';
+
+interface Props {
+	picks: readonly string[];
+}
+
+const { picks } = Astro.props;
+const items = guidesByHref(picks);
+---
+
+<section class="section band" aria-labelledby="related-title">
+	<div class="container">
+		<h2 id="related-title">Related guides</h2>
+		<div class="guide-grid">
+			{
+				items.map((item) => (
+					<a class="guide-card" href={item.href}>
+						<h3>{item.title}</h3>
+						<p>{item.blurb}</p>
+					</a>
+				))
+			}
+		</div>
+		<p class="measure"><a href="/">Read the full AI Agency Engine review</a></p>
+	</div>
+</section>

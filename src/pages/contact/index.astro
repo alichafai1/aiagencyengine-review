@@ -1,0 +1,26 @@
+---
+import OfficialLink from '../../components/OfficialLink.astro';
+import TrustPage from '../../components/TrustPage.astro';
+import { product } from '../../data/product';
+---
+
+<TrustPage
+	title="Contact This AI Agency Engine Review"
+	description="Contact for this AI Agency Engine review: no email or postal address is published yet. Product questions belong on the official product page."
+	h1="Contact"
+	crumb="Contact"
+	path="/contact/"
+>
+	<p>
+		This review does not publish an email address, phone number, or postal address. None has been supplied for this website, so this page does not invent one.
+	</p>
+	<p>
+		Do not send product or support questions to a contact copied from {product.vendor}’s launch page. That contact belongs to the vendor’s partner team, not to this review.
+	</p>
+	<p>
+		For the offer itself, use the <OfficialLink>official product page</OfficialLink>. For how the articles were checked, read the <a href="/review-methodology/">review methodology</a>. For a correction about a public claim on this site, a contact method still has to be added by the site owner.
+	</p>
+	<p>
+		<a href="/about/">About this review</a> explains what the site is and what it has not tested.
+	</p>
+</TrustPage>

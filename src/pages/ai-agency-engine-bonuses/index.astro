@@ -1,0 +1,123 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import Shot from '../../components/Shot.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Does the $47 price include a published bonus stack?',
+		answer:
+			'No. The public pages do not itemize bonuses inside the paid seat. They do list what free registration includes, and that list is separate from the $47 class.',
+	},
+	{
+		question: 'Is Murage included when you register free?',
+		answer:
+			'Yes. The product page calls Murage a free AI agent that comes with registration. It runs on your computer. It is not listed as a line inside the $47 price.',
+	},
+	{
+		question: 'Are partner prizes customer bonuses?',
+		answer:
+			'No. Prize pools on the partner page are for promoters. They are not bonuses a buyer receives with the class.',
+	},
+];
+
+const freeItems = [
+	{
+		icon: 'present' as const,
+		title: 'Three preview videos',
+		text: `Watch a dentist website become a demo and a sales email, then the path from that demo to a monthly bill. They arrive at ${product.schedule.previewTime} on ${product.schedule.prelaunchVideos}.`,
+	},
+	{
+		icon: 'assistants' as const,
+		title: 'Murage on your computer',
+		text: 'A free agent that proposes named assistants for your own work before the Early Bird session. Setup is described as about three minutes on Mac, Windows, or Linux.',
+	},
+	{
+		icon: 'calendar' as const,
+		title: 'An Early Bird seat',
+		text: `${product.schedule.earlySession}, at ${product.schedule.earlySessionTime}, one hour before the public cart time. Registration is free and does not ask for a card.`,
+	},
+	{
+		icon: 'training' as const,
+		title: 'One Kickstart Kit reading',
+		text: 'Sean reads the code once, in the first five minutes of that room. Be there if you want to hear it.',
+	},
+	{
+		icon: 'price' as const,
+		title: 'A shot at $500, for one person',
+		text: 'One person still in the Early Bird room is drawn for $500 cash. Registering does not pay $500 to everyone.',
+	},
+	{
+		icon: 'limit' as const,
+		title: 'Not the paid-seat checklist',
+		text: 'None of the items above is described as unlocked because you paid $47. The order bump and upgrades are separate purchases.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Bonuses: What Is Free and What Is Paid"
+	description="AI Agency Engine bonuses: the free videos, Murage, and Early Bird seat, kept separate from the $47 class and the optional upgrades."
+	label="Bonuses"
+	h1="AI Agency Engine Bonuses: What's Free, What's Paid, and What to Check"
+	crumb="Bonuses"
+	path="/ai-agency-engine-bonuses/"
+	related={['/ai-agency-engine-pricing/', '/ai-agency-engine-upsells/', '/ai-agency-engine-murage-demo/']}
+	faqs={faqs}
+	cta="See the Current Offer Details"
+	closingTitle="Use the free list, then read the paid offer"
+	closingText="The free registration is specific. The paid seat does not publish a matching bonus list. Open the offer if you want to see whether checkout names anything these pages do not."
+>
+	<p class="lede" slot="lede">
+		Searching for AI Agency Engine bonuses usually means looking for extras inside the {product.advertisedEntryPrice.label} price. The public pages do not publish that checklist. They do publish a free registration that is worth understanding on its own, before you pay for the class or any upgrade.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What free registration actually gives you</h2>
+			<p class="measure">
+				These items are advertised with the free signup, not as extras unlocked by the paid class. <a href="/ai-agency-engine-pricing/">Review the AI Agency Engine pricing</a> if you want the two offers side by side.
+			</p>
+			<div class="feature-grid">
+				{
+					freeItems.map((item) => (
+						<article class="feature-card">
+							<Icon name={item.icon} />
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Murage is the free item you can see</h2>
+			<p class="measure">
+				The useful part of the free registration is not a vague AI toolkit. Murage proposes a named team and waits for approval, so you can judge the workflow before the cart opens. <a href="/ai-agency-engine-murage-demo/">See the Murage demo</a>.
+			</p>
+			<Shot
+				src="/images/vendor/team-proposal.webp"
+				alt="Murage screen where Ember proposes four assistants and waits for approval."
+				width={1920}
+				height={1200}
+				caption="Vendor demo. Ember proposes the team and waits. Murage is the free agent named on the product site."
+			/>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Do not count these as buyer bonuses</h2>
+			<ul class="note-list">
+				<li>The $37 Demo Machine + 25 Money Maps row is an optional order bump. The files are not described, and it is not the free video that uses the Demo Machine name.</li>
+				<li>Red Carpet, The Client Machine, the Intensive, and the Complete Package each have a price. <a href="/ai-agency-engine-upsells/">See the optional upgrades</a>.</li>
+				<li>Prize pools and swipe files on the partner page are for promoters, not for customers.</li>
+			</ul>
+		</div>
+	</section>
+</GuidePage>

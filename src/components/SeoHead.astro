@@ -1,0 +1,43 @@
+---
+import { productionOrigin } from '../data/product';
+
+interface Props {
+	title: string;
+	description: string;
+	robots?: string;
+	ogType?: string;
+	schema?: object;
+}
+
+const { title, description, robots = 'index, follow', ogType = 'website', schema } = Astro.props;
+
+function trustedOrigin(): string | null {
+	const value = productionOrigin.trim();
+	if (!value) return null;
+	try {
+		const url = new URL(value);
+		if (url.protocol !== 'https:' && url.protocol !== 'http:') return null;
+		return url.origin;
+	} catch {
+		return null;
+	}
+}
+
+const origin = trustedOrigin();
+const canonical = origin ? new URL(Astro.url.pathname, origin).href : undefined;
+const schemaJson = schema ? JSON.stringify(schema).replace(/</g, '\\u003c') : undefined;
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="robots" content={robots} />
+{canonical && <link rel="canonical" href={canonical} />}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:locale" content="en_US" />
+{canonical && <meta property="og:url" content={canonical} />}
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+{schemaJson && <script type="application/ld+json" set:html={schemaJson} />}

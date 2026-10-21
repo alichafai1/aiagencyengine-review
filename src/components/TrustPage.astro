@@ -1,0 +1,35 @@
+---
+import { buildGuideSchema } from '../lib/schema';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	h1: string;
+	crumb: string;
+	path: string;
+}
+
+const { title, description, h1, crumb, path } = Astro.props;
+
+const schema = buildGuideSchema({
+	title,
+	description,
+	crumbs: [
+		{ name: 'AI Agency Engine review', path: '/' },
+		{ name: crumb, path },
+	],
+	aboutProduct: false,
+});
+---
+
+<BaseLayout title={title} description={description} schema={schema} showOfferBar={false}>
+	<section class="section page-top">
+		<div class="container trust-copy">
+			<Breadcrumbs current={crumb} />
+			<h1>{h1}</h1>
+			<slot />
+		</div>
+	</section>
+</BaseLayout>

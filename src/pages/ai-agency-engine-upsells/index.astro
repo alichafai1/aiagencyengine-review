@@ -1,0 +1,103 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import type { FaqItem } from '../../data/faq';
+import { advertisedOffers, product } from '../../data/product';
+
+const ladder = advertisedOffers.filter((item) => !item.entry);
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Do you need an AI Agency Engine upsell to use the $47 class?',
+		answer:
+			'No. The public pages list the bump and the higher-priced offers as separate purchases. They do not say the $47 front end requires one.',
+	},
+	{
+		question: 'When is the Complete Package sold?',
+		answer:
+			`Only in the Early Bird session on ${product.schedule.earlySession}, at ${product.schedule.earlySessionTime}. The page says it is sold nowhere else. That limit is for this launch, not a standing catalog.`,
+	},
+	{
+		question: 'What is inside each upgrade?',
+		answer:
+			`The First Client Intensive is one live day with Sean on ${product.schedule.intensiveWeekday}, ${product.schedule.intensiveDate}. The other paid rows name a price and a place in the order. They do not publish a contents list.`,
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Upsells: The Optional Offer Ladder"
+	description="AI Agency Engine upsells: the optional $37, $97, $197, and $497 offers, and the Early Bird limit on the Complete Package."
+	label="Upsells"
+	h1="AI Agency Engine Upsells: Know the Optional Offers Before Checkout"
+	crumb="Upsells"
+	path="/ai-agency-engine-upsells/"
+	related={['/ai-agency-engine-pricing/', '/ai-agency-engine-bonuses/', '/ai-agency-engine-masterclass/']}
+	faqs={faqs}
+	cta="Review the Available Options"
+	closingTitle="Start with the class, then decide what else belongs"
+	closingText="The $47 front end is the entry offer for this launch. Anything above it has its own price. Open the offer when you want the live order page, and skip any row you do not need."
+>
+	<p class="lede" slot="lede">
+		AI Agency Engine upsells are the products listed after the {product.advertisedEntryPrice.label} class. They can change what you spend. They are not described as required in order to attend the five-day class or to use the entry offer.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>The advertised ladder above $47</h2>
+			<p class="measure">
+				These prices are from the public launch page. They are not a permanent catalog. <a href="/ai-agency-engine-pricing/">Review the AI Agency Engine pricing</a> for how the front end differs. <a href="/ai-agency-engine-masterclass/">The live class dates</a> belong to the main class, not to every row here.
+			</p>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">Offer</th>
+							<th scope="col">Advertised price</th>
+							<th scope="col">Place in the order</th>
+							<th scope="col">What to know</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							ladder.map((item) => (
+								<tr>
+									<th scope="row">{item.name}</th>
+									<td class="price-cell" data-label="Advertised price">{item.priceLabel}</td>
+									<td data-label="Place in the order">{item.role}</td>
+									<td data-label="What to know">{item.note}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>The Complete Package is tied to one morning</h2>
+			<p class="measure">
+				If you want the $497 Complete Package, the page says the Early Bird session at {product.schedule.earlySessionTime} on {product.schedule.earlySession} is the only place it is sold. The public cart, advertised for {product.schedule.cartOpensTime} the same day, is when the {product.advertisedEntryPrice.label} class goes on sale. Missing the {product.schedule.earlySessionTime} session means missing that package, based on the page as written.
+			</p>
+			<p class="measure">
+				The page does not describe what the Complete Package contains. A higher price is not a lesson list. You do not need it to buy the entry class.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>What each named offer tells you</h2>
+			<ul class="note-list">
+				<li><strong>The Demo Machine + 25 Money Maps, $37.</strong> An optional bump. The files are not described. A free video uses the Demo Machine name and is not identified as this bump.</li>
+				<li><strong>Red Carpet, $97.</strong> The first upsell. Contents are not described.</li>
+				<li><strong>The Client Machine, $197.</strong> The second upsell. Contents are not described.</li>
+				<li><strong>The First Client Intensive, $497.</strong> One live day with Sean on {product.schedule.intensiveWeekday}, {product.schedule.intensiveDate}. That is a different day from the {product.schedule.masterclass} class, not day six of it.</li>
+			</ul>
+			<p class="measure">
+				<a href="/ai-agency-engine-bonuses/">The bonuses guide</a> explains why these rows are purchases, not free extras.
+			</p>
+		</div>
+	</section>
+</GuidePage>

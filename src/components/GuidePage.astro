@@ -1,0 +1,74 @@
+---
+import type { FaqItem } from '../data/faq';
+import { buildGuideSchema } from '../lib/schema';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import CtaLink from './CtaLink.astro';
+import FaqList from './FaqList.astro';
+import RelatedGuides from './RelatedGuides.astro';
+import SectionLabel from './SectionLabel.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	label: string;
+	h1: string;
+	crumb: string;
+	path: string;
+	related: readonly string[];
+	faqs: readonly FaqItem[];
+	cta: string;
+	closingTitle: string;
+	closingText: string;
+	showTopCta?: boolean;
+}
+
+const { title, description, label, h1, crumb, path, related, faqs, cta, closingTitle, closingText, showTopCta = true } =
+	Astro.props;
+
+const schema = buildGuideSchema({
+	title,
+	description,
+	crumbs: [
+		{ name: 'AI Agency Engine review', path: '/' },
+		{ name: crumb, path },
+	],
+	faqs,
+});
+---
+
+<BaseLayout title={title} description={description} schema={schema}>
+	<section class="section page-top">
+		<div class="container">
+			<Breadcrumbs current={crumb} />
+			<SectionLabel>{label}</SectionLabel>
+			<h1>{h1}</h1>
+			<slot name="lede" />
+			{
+				showTopCta && (
+					<div class="cta-row">
+						<CtaLink>{cta}</CtaLink>
+					</div>
+				)
+			}
+		</div>
+	</section>
+	<slot />
+	<RelatedGuides picks={related} />
+	<section class="section" aria-labelledby="guide-faq-title">
+		<div class="container">
+			<SectionLabel>Questions</SectionLabel>
+			<h2 id="guide-faq-title">Questions about this page</h2>
+			<FaqList items={faqs} />
+		</div>
+	</section>
+	<section class="final-cta">
+		<div class="container">
+			<h2>{closingTitle}</h2>
+			<p class="lede">{closingText}</p>
+			<div class="cta-row">
+				<CtaLink>{cta}</CtaLink>
+			</div>
+		</div>
+	</section>
+</BaseLayout>

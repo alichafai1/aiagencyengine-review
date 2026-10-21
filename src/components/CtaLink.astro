@@ -1,0 +1,34 @@
+---
+import { getOfferState } from '../data/product';
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+const offer = getOfferState();
+---
+
+{
+	offer.available ? (
+		<a
+			class:list={['btn', 'btn-primary', className]}
+			href={offer.href}
+			target="_blank"
+			rel="sponsored noopener noreferrer"
+			data-offer-kind="affiliate"
+		>
+			<slot />
+		</a>
+	) : (
+		<button
+			type="button"
+			class:list={['btn', 'btn-inactive', className]}
+			disabled
+			data-offer-kind="unavailable"
+		>
+			<slot />
+			<span class="btn-flag">Unavailable</span>
+		</button>
+	)
+}

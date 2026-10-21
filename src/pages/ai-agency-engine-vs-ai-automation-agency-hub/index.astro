@@ -1,0 +1,128 @@
+---
+import GuidePage from '../../components/GuidePage.astro';
+import InfoLink from '../../components/InfoLink.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+import { sources } from '../../data/sources';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Are AI Agency Engine and the AI Automation Agency Hub the same offer?',
+		answer:
+			'No. AI Agency Engine is Sean Donahoe’s advertised preview and live class. The Hub is a separate Skool community published by Morningside Education. The pages do not share a syllabus.',
+	},
+	{
+		question: 'Is the Hub free?',
+		answer:
+			'The Hub about page lists the community as free and says join requests are accepted quickly. That page does not publish a price for the separate AAA Accelerator.',
+	},
+	{
+		question: 'Which one should a beginner open first?',
+		answer:
+			'Open the free Hub if you want templates and a community before spending money. Open the AI Agency Engine preview if you want to watch a local-business demo and decide on a dated class. Either way, read the current terms yourself.',
+	},
+];
+
+const rows = [
+	{
+		point: 'What it is',
+		engine: 'A free video preview plus an advertised five-day live class for offering AI help to local businesses.',
+		hub: 'A public Skool community with resources, templates, playbooks, and a member network.',
+	},
+	{
+		point: 'Who publishes it',
+		engine: `${product.vendor}. The product site also names ADD Marketing Group, LLC.`,
+		hub: 'The about page credits Morningside Education. It does not name a single instructor in the byline we reviewed.',
+	},
+	{
+		point: 'Learning shape',
+		engine: 'Watch a website become a demo and an email, then a live class on set November dates. The daily syllabus is not published.',
+		hub: 'Step-by-step resources and examples of what agencies build and charge. The classroom contents are behind the join button.',
+	},
+	{
+		point: 'Price you can verify',
+		engine: `${product.advertisedEntryPrice.label} front end, cart ${product.schedule.cartOpens} to ${product.schedule.cartCloses}. Upgrades are optional.`,
+		hub: 'The community is listed as free. The linked accelerator page does not show a price.',
+	},
+	{
+		point: 'Check before you join',
+		engine: 'Lesson list, refund terms, and whether the cart is open.',
+		hub: 'What you can actually open after joining, and what the accelerator call commits you to.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine vs AI Automation Agency Hub"
+	description="AI Agency Engine vs AI Automation Agency Hub: the advertised $47 live class compared with the free Skool community and the separate accelerator."
+	label="Comparison"
+	h1="AI Agency Engine vs AI Automation Agency Hub: Which Should You Explore?"
+	crumb="Vs the Hub"
+	path="/ai-agency-engine-vs-ai-automation-agency-hub/"
+	related={['/ai-agency-engine-alternatives/', '/ai-agency-engine-pricing/', '/ai-agency-engine-for-beginners/']}
+	faqs={faqs}
+	cta="See the $47 Offer"
+	closingTitle="Use the difference, then open the offer you mean"
+	closingText="If you want the local-business class, check the AI Agency Engine offer and read the checkout. If you want the community, use the Hub’s own join button. The November 2026 class dates are for this launch."
+>
+	<p class="lede" slot="lede">
+		People comparing AI Agency Engine with the AI Automation Agency Hub are looking at two different doors. One is a dated class built around a local-business demonstration. The other is a free community, with a separate accelerator behind it. Offer buttons for AI Agency Engine on this site are affiliate links. A purchase through one may earn this site a commission. Links to the Hub and the accelerator are citations, not offer buttons.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>What the public pages let you compare</h2>
+			<p class="measure">
+				Sources: the <a href="/">AI Agency Engine review</a>, the <InfoLink href={sources.aaaHub}>Hub about page</InfoLink>, and the <InfoLink href={sources.aaaAccelerator}>AAA Accelerator</InfoLink> page linked from that Hub. Member counts and revenue lines on those pages are the publishers’ claims. This review did not audit them.
+			</p>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">Question</th>
+							<th scope="col">AI Agency Engine</th>
+							<th scope="col">AI Automation Agency Hub</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							rows.map((row) => (
+								<tr>
+									<th scope="row">{row.point}</th>
+									<td data-label="AI Agency Engine">{row.engine}</td>
+									<td data-label="AI Automation Agency Hub">{row.hub}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>The Hub is a community. The accelerator is a further step</h2>
+			<p class="measure">
+				The Hub page says you do not need more tutorials, you need clients who pay you. It offers resources, playbooks, and a room of members. It also says the material comes from Morningside AI’s client work and from agencies trained through the AAA Accelerator. Those results are stated by the page. They are not a result this site verified.
+			</p>
+			<p class="measure">
+				The accelerator page describes builds, outreach, sales, coaching, and a seven-stage path for developers, freelancers, and operators. It asks visitors to book a strategy call. It does not list a public price on the page we reviewed, so this comparison will not invent one.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Which reader should look where</h2>
+			<ul class="note-list">
+				<li><strong>You want a local website turned into a demo and an email.</strong> Start with the AI Agency Engine preview, then decide on the {product.advertisedEntryPrice.label} class. <a href="/ai-agency-engine-murage-demo/">The Murage demo</a> shows the workflow.</li>
+				<li><strong>You want a free room of templates and other people building agencies.</strong> Join the Hub from its own page and see what the classroom actually opens.</li>
+				<li><strong>You want coaching and a longer delivery system.</strong> Read the accelerator page. Confirm the price and the call before you treat it as the same purchase as a {product.advertisedEntryPrice.label} class.</li>
+			</ul>
+			<p class="measure">
+				Neither page proves you will land a client. <a href="/ai-agency-engine-alternatives/">The alternatives guide</a> adds the self-study path if a program is not what you need yet.
+			</p>
+		</div>
+	</section>
+</GuidePage>

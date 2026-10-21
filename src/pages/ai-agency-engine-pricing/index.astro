@@ -1,0 +1,121 @@
+---
+import CtaLink from '../../components/CtaLink.astro';
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import type { FaqItem } from '../../data/faq';
+import { advertisedOffers, offerSourceNote, product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'What is the AI Agency Engine price?',
+		answer: `The advertised front end is ${product.advertisedEntryPrice.label}. The cart is scheduled to open ${product.schedule.cartOpens} at ${product.schedule.cartOpensTime} and close ${product.schedule.cartCloses} at ${product.schedule.cartClosesTime}.`,
+	},
+	{
+		question: 'Does $47 include the free videos and the upgrades?',
+		answer:
+			'No. The free videos and Murage are a separate registration. The $37 bump and the upgrades at $97, $197, and $497 are optional purchases.',
+	},
+	{
+		question: 'What should I read before paying?',
+		answer:
+			'Open the checkout and confirm the lesson list, refund terms, and the final total. The public pages do not itemize those details.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Price: What the $47 Offer Includes"
+	description="AI Agency Engine price: the advertised $47 live class, how it differs from the free preview, and the optional upgrades that can change the total."
+	label="Pricing"
+	h1="AI Agency Engine Pricing: What Does the $47 Offer Include?"
+	crumb="Pricing"
+	path="/ai-agency-engine-pricing/"
+	related={['/ai-agency-engine-bonuses/', '/ai-agency-engine-upsells/', '/ai-agency-engine-masterclass/']}
+	faqs={faqs}
+	cta="Check Pricing & Access"
+	closingTitle="Check the $47 offer before you add anything else"
+	closingText={`The advertised entry price is ${product.advertisedEntryPrice.label}, and the cart is scheduled for ${product.schedule.cartOpens} through ${product.schedule.cartCloses}. Open the offer and confirm what that checkout includes.`}
+>
+	<p class="lede" slot="lede">
+		The AI Agency Engine price is {product.advertisedEntryPrice.label}. That is the advertised entry for the live class in this launch. It is not the free preview, and it does not include the upgrades that can appear later in the order.
+	</p>
+
+	<section class="section band">
+		<div class="container">
+			<h2>See what you can explore free, and what the class adds</h2>
+			<p class="measure">
+				Free registration lets you watch the three preview videos and use Murage before you spend anything. The paid seat is the five-day class. <a href="/ai-agency-engine-masterclass/">The live class dates</a> are {product.schedule.masterclass}. Registering for the videos does not buy that seat.
+			</p>
+			<div class="price-columns">
+				<div>
+					<h3><Icon name="present" size={22} /> Free preview</h3>
+					<ul class="note-list">
+						<li>Three videos at {product.schedule.previewTime} on {product.schedule.prelaunchVideos}.</li>
+						<li>Murage on your own computer, with setup described as about three minutes.</li>
+						<li>An Early Bird seat on {product.schedule.earlySession} at {product.schedule.earlySessionTime}. No card is required to register.</li>
+						<li>One Kickstart Kit code, read once, and a $500 drawing for one person still in that room.</li>
+					</ul>
+				</div>
+				<div>
+					<h3><Icon name="price" size={22} /> Paid class</h3>
+					<ul class="note-list">
+						<li>{product.advertisedEntryPrice.label} when the cart opens {product.schedule.cartOpens} at {product.schedule.cartOpensTime}.</li>
+						<li>Cart closes {product.schedule.cartCloses} at {product.schedule.cartClosesTime}, before the first class day.</li>
+						<li>Live class {product.schedule.masterclass}, weekdays at {product.schedule.masterclassTime}.</li>
+						<li>Confirm lessons, templates, and support on the checkout. They are not itemized here.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>What can raise the amount you pay</h2>
+			<p class="measure">
+				{offerSourceNote} A free video is also named The Demo Machine. The $37 row is The Demo Machine + 25 Money Maps. Do not assume they are the same file. <a href="/ai-agency-engine-upsells/">Compare the advertised upgrades</a> before you treat the entry price as the total.
+			</p>
+			<div class="table-wrap">
+				<table class="offer-table">
+					<thead>
+						<tr>
+							<th scope="col">Offer</th>
+							<th scope="col">Advertised price</th>
+							<th scope="col">How it sits</th>
+							<th scope="col">What is confirmed</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							advertisedOffers.map((item) => (
+								<tr class:list={[item.entry && 'is-entry']}>
+									<th scope="row">{item.name}</th>
+									<td class="price-cell" data-label="Advertised price">{item.priceLabel}</td>
+									<td data-label="How it sits">{item.role}</td>
+									<td data-label="What is confirmed">{item.note}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</div>
+			<div class="cta-row">
+				<CtaLink>Check Pricing & Access</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Confirm these on the offer, not from a guess</h2>
+			<ul class="note-list">
+				<li>Which lessons or calls the {product.advertisedEntryPrice.label} seat includes.</li>
+				<li>The refund rule and whether a bump is already selected.</li>
+				<li>Any AI account you would pay for yourself. Murage is described as software on your computer, not as a priced subscription.</li>
+			</ul>
+			<p class="measure">
+				<a href="/ai-agency-engine-bonuses/">The bonuses page</a> explains why the free registration is not a bonus list inside the paid seat.
+			</p>
+		</div>
+	</section>
+</GuidePage>

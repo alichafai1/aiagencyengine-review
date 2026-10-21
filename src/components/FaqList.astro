@@ -1,0 +1,54 @@
+---
+import type { FaqItem } from '../data/faq';
+import { isAffiliateHref } from '../data/product';
+import Icon from './Icon.astro';
+
+interface Props {
+	items: readonly FaqItem[];
+}
+
+const { items } = Astro.props;
+const urlPattern = /https:\/\/[^\s]+/g;
+
+function partsFor(answer: string) {
+	const parts: { type: 'text' | 'url'; value: string }[] = [];
+	let last = 0;
+	for (const match of answer.matchAll(urlPattern)) {
+		const index = match.index ?? 0;
+		if (index > last) parts.push({ type: 'text', value: answer.slice(last, index) });
+		parts.push({ type: 'url', value: match[0] });
+		last = index + match[0].length;
+	}
+	if (last < answer.length) parts.push({ type: 'text', value: answer.slice(last) });
+	return parts;
+}
+---
+
+<div class="faq-list">
+	{
+		items.map((item) => (
+			<details class="faq-item">
+				<summary>
+					<h3>{item.question}</h3>
+					<Icon name="chevron" size={22} />
+				</summary>
+				<p class="faq-answer">
+					{partsFor(item.answer).map((part) =>
+						part.type === 'url' ? (
+							<a
+								href={part.value}
+								target="_blank"
+								rel={isAffiliateHref(part.value) ? 'sponsored noopener noreferrer' : 'noopener noreferrer'}
+							>
+								{part.value}
+								<span class="sr-only"> (opens in a new tab)</span>
+							</a>
+						) : (
+							part.value
+						),
+					)}
+				</p>
+			</details>
+		))
+	}
+</div>

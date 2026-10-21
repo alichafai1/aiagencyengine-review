@@ -1,0 +1,127 @@
+---
+import CtaLink from '../../components/CtaLink.astro';
+import GuidePage from '../../components/GuidePage.astro';
+import Shot from '../../components/Shot.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'What is Murage?',
+		answer:
+			'Murage is the free AI agent on the AI Agency Engine product site. It proposes a team of named assistants from a business website and waits for approval before the work starts.',
+	},
+	{
+		question: 'Is the Murage demo the paid masterclass?',
+		answer:
+			'No. The screenshots are public demonstrations. Murage comes with free registration. The pages do not say these screens are the syllabus of the $47 class.',
+	},
+	{
+		question: 'Is Summit Roofing a client result?',
+		answer:
+			'No. The offer page labels that walkthrough a simulated test and an example business. The $1,000 monthly figure is an illustration, not revenue this review verified.',
+	},
+];
+
+const shots = [
+	{
+		title: 'A team the owner can approve',
+		text: 'This is the moment the workflow becomes something a business can react to. Ember proposes four named assistants for a dental research brief and stops for a yes. You could show a prospect a team built around their work, instead of a generic list of tools.',
+		src: '/images/vendor/team-proposal.webp',
+		alt: 'Ember proposes four assistants for a dental research brief and waits for approval.',
+		width: 1920,
+		height: 1200,
+		caption: 'Vendor demo. The team is proposed and held for approval.',
+	},
+	{
+		title: 'A brief you can read before you pitch',
+		text: 'A service offer is easier to trust when it starts with a page the owner can read. The team saves a sourced recommendation. In the dental example the conclusion is not an automatic yes, which matters: the workflow can also tell you when not to sell.',
+		src: '/images/vendor/research-onepager.webp',
+		alt: 'Saved research note on whether to sell to dental practices.',
+		width: 1920,
+		height: 1200,
+		caption: 'Vendor demo. Example research, with sources marked.',
+	},
+	{
+		title: 'Email drafts that do not send themselves',
+		text: 'Follow-up is where local inquiries go quiet. The inbox demo drafts replies in the owner voice and holds them. The offer page describes this screen as emails read and replies drafted, with nothing sent until someone agrees.',
+		src: '/images/vendor/inbox-drafts.webp',
+		alt: 'Inbox drafts held until the owner answers.',
+		width: 1920,
+		height: 1200,
+		caption: 'Vendor demo. The assistant writes the email and does not send it.',
+	},
+	{
+		title: 'A morning brief you can keep running',
+		text: 'A retained service has to continue after the first demo. This screenshot shows a weekday 7:00 a.m. brief waiting on Confirm. That is the kind of routine a business could pay to have watched, and it does not start until the owner agrees.',
+		src: '/images/vendor/routine-morning-brief.webp',
+		alt: 'Confirmation prompt for a weekday 7:00 a.m. morning brief.',
+		width: 1920,
+		height: 1200,
+		caption: 'Vendor demo. The brief stays pending until it is confirmed.',
+	},
+];
+---
+
+<GuidePage
+	title="AI Agency Engine Murage Demo: How the Workflow Looks"
+	description="AI Agency Engine Murage demo: see the team proposal, research brief, held email drafts, and morning brief, and how they could support a local-business service."
+	label="Murage"
+	h1="AI Agency Engine Murage Demo: How the AI Assistant Workflow Works"
+	crumb="Murage demo"
+	path="/ai-agency-engine-murage-demo/"
+	related={['/ai-agency-engine-masterclass/', '/ai-agency-engine-pricing/', '/is-ai-agency-engine-legit/']}
+	faqs={faqs}
+	cta="Explore the Offer"
+	closingTitle="Use the demo to judge the workflow"
+	closingText="The screenshots show how Murage is being demonstrated. They do not list the lessons inside the $47 class. Open the offer when you want that list."
+>
+	<p class="lede" slot="lede">
+		The AI Agency Engine Murage demo is the public look at the agent {product.vendor} includes with free registration. You describe the work, or point it at a business website, and it proposes a named team. The screenshots are the fastest way to see whether that is a service you would want to offer.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>See how a website becomes a demo</h2>
+			<p class="measure">
+				These images are vendor demonstrations. They show the workflow. They are not attendance records from the paid class, and <a href="/ai-agency-engine-masterclass/">the live class dates</a> do not turn them into a syllabus. The product page says Murage runs on your computer and sets up in about three minutes.
+			</p>
+			{
+				shots.map((shot) => (
+					<article class="demo-block">
+						<h3>{shot.title}</h3>
+						<p>{shot.text}</p>
+						<Shot src={shot.src} alt={shot.alt} width={shot.width} height={shot.height} caption={shot.caption} />
+					</article>
+				))
+			}
+			<div class="cta-row">
+				<CtaLink>Explore the Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>Summit Roofing shows the pitch, as a simulation</h2>
+			<p class="measure">
+				The offer page then points Murage at an example roofer: repair, replacement, and storm damage across four offices, with inspection requests through a form. It flags unanswered storm inquiries, estimates that sit for weeks, and uneven review requests. The team it shows is Storm Responder, Estimate Chaser, and Job Updater.
+			</p>
+			<p class="measure">
+				The same walkthrough labels the fee at $1,000 a month and says one extra roof job would cover nine months. The page calls the run a simulated test of an example business. Treat the number as the vendor’s illustration, not collected revenue. <a href="/is-ai-agency-engine-legit/">The legitimacy page</a> keeps that distinction clear.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>How the same steps could fit a local service</h2>
+			<p class="measure">
+				The pattern is practical. Start with a business that already has a website. Name one dropped task, such as a call nobody returns or a quote that never gets a follow-up. Show a short assistant workflow for that task, and send the email only after you approve it.
+			</p>
+			<p class="measure">
+				Dentists, roofers, and med spas are the examples the sales page uses. The screenshots do not prove those businesses will hire you. <a href="/ai-agency-engine-use-cases/">See practical local-business service ideas</a>, and <a href="/ai-agency-engine-pricing/">review the AI Agency Engine pricing</a> before you assume these demos are the contents of the {product.advertisedEntryPrice.label} seat.
+			</p>
+		</div>
+	</section>
+</GuidePage>

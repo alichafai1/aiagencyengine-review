@@ -1,0 +1,151 @@
+---
+import CtaLink from '../../components/CtaLink.astro';
+import GuidePage from '../../components/GuidePage.astro';
+import Icon from '../../components/Icon.astro';
+import type { FaqItem } from '../../data/faq';
+import { product } from '../../data/product';
+
+const faqs: readonly FaqItem[] = [
+	{
+		question: 'Do you need a software product before you start an AI agency?',
+		answer:
+			'No. Start with one kind of business and one task that already slips. A small, safe demonstration is enough to learn whether anyone wants the help.',
+	},
+	{
+		question: 'What should the first offer include?',
+		answer:
+			'A named problem, a draft workflow a person still approves, a simple price, and a clear limit. Do not promise savings or new customers you have not measured.',
+	},
+	{
+		question: 'Where does AI Agency Engine fit this roadmap?',
+		answer: `It is one optional look at ${product.vendor}'s local-business method: free preview videos, Murage, and an advertised live class. It is not a required step, and the class syllabus is not published.`,
+	},
+];
+
+const steps = [
+	{
+		index: '01',
+		icon: 'building' as const,
+		title: 'Choose one type of business',
+		text: 'Pick a niche you can visit or already understand, such as roofers, clinics, or local services. A narrow list is easier to research than every business on the street.',
+	},
+	{
+		index: '02',
+		icon: 'search' as const,
+		title: 'Name a real operational gap',
+		text: 'Look for work the business already does by hand: unanswered inquiries, estimates with no follow-up, or review requests that never go out.',
+	},
+	{
+		index: '03',
+		icon: 'workflow' as const,
+		title: 'Test whether AI can help that task',
+		text: 'A draft reply or a research note is a fair test. If the workflow needs private data or a regulated decision, stop and say so.',
+	},
+	{
+		index: '04',
+		icon: 'assistants' as const,
+		title: 'Build a small, safe demonstration',
+		text: 'Use sample information or a public website. Keep a person in the loop. Nothing should send, bill, or change a customer record on its own.',
+	},
+	{
+		index: '05',
+		icon: 'email' as const,
+		title: 'Explain the service and its limits',
+		text: 'Say what the demo does, what a person still checks, and what you are not claiming. An owner should be able to repeat the offer.',
+	},
+	{
+		index: '06',
+		icon: 'user' as const,
+		title: 'Contact a few relevant businesses',
+		text: 'Write to people whose public site shows the task you studied. Personal notes beat a blast. <a href="/how-to-get-your-first-ai-agency-client/">The first-client plan</a> covers that outreach.',
+	},
+	{
+		index: '07',
+		icon: 'verified' as const,
+		title: 'Validate demand before you build more',
+		text: 'A conversation, a paid pilot, or a clear no is useful. A large platform is not. Expand only after someone wants the specific help.',
+	},
+	{
+		index: '08',
+		icon: 'calendar' as const,
+		title: 'Deliver, watch, and adjust',
+		text: 'Agree the scope, check the work, and fix what breaks. A retained service is the routine after the first demo, not the first slide.',
+	},
+];
+---
+
+<GuidePage
+	title="How to Start an AI Agency: A Beginner Roadmap"
+	description="How to start an AI agency: choose a niche, find one real task, build a safe demo, and test demand before you buy a long program."
+	label="Start here"
+	h1="How to Start an AI Agency: A Practical Beginner's Roadmap"
+	crumb="Start an agency"
+	path="/how-to-start-an-ai-agency/"
+	related={[
+		'/how-to-get-your-first-ai-agency-client/',
+		'/ai-agency-engine-for-beginners/',
+		'/ai-agency-engine-use-cases/',
+	]}
+	faqs={faqs}
+	cta="Explore AI Agency Engine"
+	closingTitle="Practice the sequence, then choose a teacher"
+	closingText="You can follow these steps with official tool docs and your own notes. If you want Sean Donahoe’s demonstrated local-business path, review the current AI Agency Engine offer and the November 2026 class dates."
+	showTopCta={false}
+>
+	<p class="lede" slot="lede">
+		Starting an AI agency is a service business, not a hunt for another tool. You pick a kind of local business, find one task that slips, show a small safe demo, and learn whether an owner will pay. You do not need a platform on day one.
+	</p>
+
+	<section class="section">
+		<div class="container">
+			<h2>A roadmap you can follow this month</h2>
+			<p class="measure">
+				The examples below are illustrations, not client results. A roofing office with stalled estimates is a teaching picture. It is not a business this site signed.
+			</p>
+			<ol class="steps">
+				{
+					steps.map((step) => (
+						<li>
+							<span class="step-badge">{step.index}</span>
+							<div class="step-body">
+								<h3>
+									<Icon name={step.icon} />
+									{step.title}
+								</h3>
+								<p set:html={step.text} />
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section band">
+		<div class="container">
+			<h2>A short checklist</h2>
+			<ul class="note-list">
+				<li>One niche, not a list of every industry.</li>
+				<li>One task you can point to on a public website.</li>
+				<li>A demo that cannot send messages or spend money without a person.</li>
+				<li>A one-paragraph offer with a limit and a price you can explain.</li>
+				<li>Five relevant conversations before you add more software.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="container">
+			<h2>Where a training offer can help</h2>
+			<p class="measure">
+				Some people want a teacher for the selling half of this roadmap. AI Agency Engine, from {product.vendor}, advertises that kind of look: free videos that turn a website into a demo and an email, Murage on your computer, and a live class on {product.schedule.masterclass}. The {product.advertisedEntryPrice.label} seat is separate from the free registration. The daily lessons are not published, so treat the class as an option to inspect, not as a required step.
+			</p>
+			<p class="measure">
+				<a href="/ai-agency-engine-for-beginners/">The beginner guide</a> says who that option may suit. <a href="/ai-agency-engine-use-cases/">Local-business service ideas</a> can help you choose the first task.
+			</p>
+			<div class="cta-row">
+				<CtaLink>Explore AI Agency Engine</CtaLink>
+			</div>
+		</div>
+	</section>
+</GuidePage>

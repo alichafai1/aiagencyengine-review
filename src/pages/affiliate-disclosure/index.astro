@@ -1,0 +1,32 @@
+---
+import OfficialLink from '../../components/OfficialLink.astro';
+import TrustPage from '../../components/TrustPage.astro';
+import { product } from '../../data/product';
+---
+
+<TrustPage
+	title="Affiliate Disclosure for This Review"
+	description="Affiliate disclosure for this AI Agency Engine review: offer buttons can earn a commission, and editorial links to official sources do not."
+	h1="Affiliate Disclosure"
+	crumb="Affiliate disclosure"
+	path="/affiliate-disclosure/"
+>
+	<p>
+		Some buttons on this site are affiliate links for {product.name}. If you buy through one, this site may earn a commission. The commission does not change the advertised {product.advertisedEntryPrice.label} price.
+	</p>
+	<p>
+		Those buttons use one shared link and open in a new tab. They are labeled as offers, such as “Check the Official Offer.” A normal link to a guide, or a citation to another company’s documentation, is not an offer button.
+	</p>
+	<p>
+		The articles describe what the public pages show. A commission is not proof that the class produces clients, and it is not a paid instruction from the seller to reach a particular verdict. This review has not purchased or attended the class.
+	</p>
+	<p>
+		The cart is advertised to open on {product.schedule.cartOpens}. Until that window, an offer button is a way to inspect the current page, not a claim that checkout is open today.
+	</p>
+	<p>
+		Partner-only details, including commission rates and promoter prizes, stay off these pages. They are not part of the price a buyer pays. The product terms are on the <OfficialLink>official product page</OfficialLink>.
+	</p>
+	<p>
+		Read <a href="/review-methodology/">how this review was prepared</a> for the difference between a published fact and a seller example.
+	</p>
+</TrustPage>

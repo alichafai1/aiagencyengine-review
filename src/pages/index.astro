@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaLink from '../components/CtaLink.astro';
+import FaqList from '../components/FaqList.astro';
+import Icon from '../components/Icon.astro';
+import ProsCons from '../components/ProsCons.astro';
+import SectionLabel from '../components/SectionLabel.astro';
+import Shot from '../components/Shot.astro';
+import { homepageFaqs } from '../data/faq';
+import { guides } from '../data/guides';
+import { advertisedOffers, offerSourceNote, product } from '../data/product';
+import {
+	advantages,
+	audiences,
+	freePreview,
+	heroIntro,
+	homepageMeta,
+	limitations,
+	murageDemos,
+	paidFacts,
+	roofingSteps,
+	valueCards,
+} from '../data/review';
+import { buildHomepageSchema } from '../lib/schema';
+
+const schema = buildHomepageSchema({
+	title: homepageMeta.title,
+	description: homepageMeta.description,
+	faqs: homepageFaqs,
+});
+
+const audienceIcons = ['beginner', 'user', 'building'] as const;
+---
+
+<BaseLayout title={homepageMeta.title} description={homepageMeta.description} schema={schema}>
+	<section class="hero" id="top">
+		<div class="container hero-grid">
+			<div>
+				<SectionLabel>Independent product review</SectionLabel>
+				<h1>AI Agency Engine Review: Is the $47 Masterclass Worth It?</h1>
+				<p class="lede">{heroIntro}</p>
+				<div class="hero-actions">
+					<CtaLink>Check the Official Offer</CtaLink>
+					<a class="btn btn-secondary" href="/#pricing">See What You Get</a>
+				</div>
+			</div>
+			<Shot
+				src="/images/vendor/team-proposal.webp"
+				alt="Murage screen where Ember proposes four assistants for a dental research brief and waits for approval."
+				width={1920}
+				height={1200}
+				eager
+				caption="Vendor demo: Ember proposes a named AI team and waits for approval."
+			/>
+		</div>
+	</section>
+
+	<section class="section band" id="snapshot" aria-labelledby="snapshot-title">
+		<div class="container">
+				<SectionLabel>At a glance</SectionLabel>
+				<h2 id="snapshot-title">See the Free Preview and the $47 Class Side by Side</h2>
+			<div class="snapshot-grid">
+				<article class="snap-item">
+					<Icon name="overview" />
+					<div>
+						<strong>Product</strong>
+						<p>{product.name}</p>
+					</div>
+				</article>
+				<article class="snap-item">
+					<Icon name="user" />
+					<div>
+						<strong>Instructor</strong>
+						<p>{product.vendor}</p>
+					</div>
+				</article>
+				<article class="snap-item">
+					<Icon name="present" />
+					<div>
+						<strong>Free preview</strong>
+						<p>Three videos, Murage on your computer, and an Early Bird seat. Registration is free, with no card.</p>
+					</div>
+				</article>
+				<article class="snap-item">
+					<Icon name="training" />
+					<div>
+						<strong>Paid class</strong>
+						<p>{product.schedule.masterclass}, {product.schedule.masterclassDays}, {product.schedule.masterclassTime}.</p>
+					</div>
+				</article>
+				<article class="snap-item">
+					<Icon name="price" />
+					<div>
+						<strong>Entry price</strong>
+						<p>{product.advertisedEntryPrice.label} when the cart opens {product.schedule.cartOpens}.</p>
+					</div>
+				</article>
+				<article class="snap-item">
+					<Icon name="calendar" />
+					<div>
+						<strong>Cart window</strong>
+						<p>{product.schedule.cartOpens}, {product.schedule.cartOpensTime}, through {product.schedule.cartCloses}, {product.schedule.cartClosesTime}.</p>
+					</div>
+				</article>
+			</div>
+			<div class="cta-row">
+				<CtaLink>View the $47 Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="approach" aria-labelledby="approach-title">
+		<div class="container">
+			<SectionLabel>The opportunity</SectionLabel>
+			<h2 id="approach-title">Turn a Local Website Into a Service You Can Show</h2>
+			<p class="measure">
+				Find a task a local business is dropping, show an AI-assisted way to handle it, and send the pitch only after you approve it.
+			</p>
+			<div class="feature-grid">
+				{
+					valueCards.map((item) => (
+						<article class="feature-card">
+							<Icon name={item.icon} />
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section band" id="murage" aria-labelledby="murage-title">
+		<div class="container">
+			<SectionLabel>Murage</SectionLabel>
+			<h2 id="murage-title">See How Murage Turns a Business Website Into a Practical AI Demo</h2>
+			<p class="measure">
+				Murage comes with the free registration, not as a listed part of the {product.advertisedEntryPrice.label} class. It runs on your computer. The demos set up your own work, then a pitch for another business.
+			</p>
+			<div class="ember-note">
+				<img
+					src="/images/vendor/bot-ember.webp"
+					alt="Ember, the illustrated chief of staff inside Murage."
+					width="512"
+					height="512"
+					loading="lazy"
+					decoding="async"
+				/>
+				<p>Ember proposes the team and waits. The portrait is product artwork, not a staff photo.</p>
+			</div>
+			{
+				murageDemos.map((demo) => (
+					<article class="demo-block">
+						<h3>{demo.title}</h3>
+						<p>{demo.text}</p>
+						<Shot src={demo.src} alt={demo.alt} width={demo.width} height={demo.height} caption={demo.caption} />
+					</article>
+				))
+			}
+			<div class="cta-row">
+				<CtaLink>Explore the Masterclass Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="pricing" aria-labelledby="pricing-title">
+		<div class="container">
+			<SectionLabel>Pricing</SectionLabel>
+			<h2 id="pricing-title">What the Advertised $47 Entry Price Covers</h2>
+			<div class="price-panel">
+				<p class="price-kicker"><Icon name="price" size={22} /> Advertised front end</p>
+				<p class="price-figure">{product.advertisedEntryPrice.label}</p>
+				<p>
+					This is the paid class, not the free preview. Video registration does not buy the seat, and the {product.advertisedEntryPrice.label} price does not include the upgrades.
+				</p>
+				<div class="price-columns">
+					<div>
+						<h3>Free preview</h3>
+						<ul class="check-list">
+							{freePreview.map((item) => <li>{item}</li>)}
+						</ul>
+					</div>
+					<div>
+						<h3>Paid masterclass</h3>
+						<ul class="check-list">
+							{paidFacts.map((item) => <li>{item}</li>)}
+						</ul>
+					</div>
+				</div>
+				<h3>Optional upgrades</h3>
+				<p class="measure">{offerSourceNote} The Complete Package is sold only on {product.schedule.earlySession} at {product.schedule.earlySessionTime}. <a href="/ai-agency-engine-pricing/">See the full price guide</a>.</p>
+				<ul class="note-list">
+					{
+						advertisedOffers.map((item) => (
+							<li>
+								<strong>{item.name}</strong> {item.priceLabel}
+							</li>
+						))
+					}
+				</ul>
+				<div class="cta-row">
+					<CtaLink>Check Pricing & Access</CtaLink>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band" id="example" aria-labelledby="example-title">
+		<div class="container">
+			<SectionLabel>A local example</SectionLabel>
+			<h2 id="example-title">See the Workflow on a Roofing Business</h2>
+			<p class="measure">
+				The offer page runs this on Summit Roofing and labels it a simulated test. It is an example pitch, not collected revenue.
+			</p>
+			<ol class="steps">
+				{
+					roofingSteps.map((step) => (
+						<li>
+							<span class="step-badge">{step.index}</span>
+							<div class="step-body">
+								<h3>
+									<Icon name={step.icon} />
+									{step.title}
+								</h3>
+								<p>{step.text}</p>
+							</div>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section" id="pros-cons" aria-labelledby="pros-title">
+		<div class="container">
+			<SectionLabel>A straight read</SectionLabel>
+			<h2 id="pros-title">Why the Offer Is Worth a Look, and What You Still Do</h2>
+			<ProsCons advantages={advantages} limitations={limitations} />
+			<div class="cta-row">
+				<CtaLink>See the Current Offer Details</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section band" id="who" aria-labelledby="who-title">
+		<div class="container">
+			<SectionLabel>Fit</SectionLabel>
+			<h2 id="who-title">Could AI-Assisted Services Fit the Work You Already Do?</h2>
+			<div class="audience-grid">
+				{
+					audiences.map((person, index) => (
+						<article class="audience-card">
+							<Icon name={audienceIcons[index]} />
+							<p class="card-index">{person.index}</p>
+							<h3>{person.title}</h3>
+							<p>{person.text}</p>
+						</article>
+					))
+				}
+			</div>
+			<div class="cta-row">
+				<CtaLink>Check the Official Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="guides" aria-labelledby="guides-title">
+		<div class="container">
+			<SectionLabel>Guides</SectionLabel>
+			<h2 id="guides-title">Check the Price, the Class, and the Demo</h2>
+			<p class="measure"><strong>The offer</strong></p>
+			<div class="guide-grid">
+				{
+					guides
+						.filter((guide) => guide.group === 'offer')
+						.map((guide) => (
+							<a class="guide-card" href={guide.href}>
+								<h3>{guide.title}</h3>
+							</a>
+						))
+				}
+			</div>
+			<p class="measure"><strong>Compare and get started</strong></p>
+			<div class="guide-grid">
+				{
+					guides
+						.filter((guide) => guide.group === 'learn')
+						.map((guide) => (
+							<a class="guide-card" href={guide.href}>
+								<h3>{guide.title}</h3>
+							</a>
+						))
+				}
+			</div>
+			<p class="measure">
+				<a href="/review-methodology/">How this review was prepared</a> and the <a href="/affiliate-disclosure/">affiliate disclosure</a> explain what was checked, and what a purchase through an offer button can earn.
+			</p>
+		</div>
+	</section>
+
+	<section class="section band" id="faq" aria-labelledby="faq-title">
+		<div class="container">
+			<SectionLabel>Questions</SectionLabel>
+			<h2 id="faq-title">Frequently asked questions</h2>
+			<FaqList items={homepageFaqs} />
+			<div class="cta-row">
+				<CtaLink>Check the Official Offer</CtaLink>
+			</div>
+		</div>
+	</section>
+
+	<section class="final-cta" id="next" aria-labelledby="next-title">
+		<div class="container">
+			<SectionLabel>Next step</SectionLabel>
+			<h2 id="next-title">See Whether the $47 Class Fits What You Want to Build</h2>
+			<p class="final-price">{product.advertisedEntryPrice.label}</p>
+			<p class="lede">
+				If the workflow matches the service you want to offer, open the current AI Agency Engine offer and read exactly what the {product.advertisedEntryPrice.label} checkout includes.
+			</p>
+			<div class="cta-row">
+				<CtaLink>Check the Official Offer</CtaLink>
+			</div>
+			<p class="offer-notice offer-notice-dark">
+				Advertised entry price. Cart opens {product.schedule.cartOpens}. Upgrades are not included.
+			</p>
+		</div>
+	</section>
+</BaseLayout>
